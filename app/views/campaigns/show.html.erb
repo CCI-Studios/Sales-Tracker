@@ -19,7 +19,11 @@
 
 <h2>Contacts Details</h2>
 <p>
-	Avg Calls Per Active Day: <%= number_with_precision @campaign.avg_calls_per_day, :precision => 2 %>
+	Avg Calls Per Active Day: <%= number_with_precision @campaign.avg_calls_per_day, :precision => 2 %><br>
+	Avg New Calls Per Day: <%= @campaign.avg_new_calls_per_day %><br>
+	Follow ups per active day: <%= @campaign.follow_ups_per_day %><br>
+	Emails Per Day: <%= @campaign.emails_per_day %><br>
+	Contacts Per Sale: <%= @campaign.contacts_per_sale %><br>
 </p>
 
 <p><%= link_to 'Campaigns', campaigns_path %></p>

@@ -9,9 +9,38 @@ class Campaign < ActiveRecord::Base
     total_revenue/attempts.count
   end
   
+  def attempts_by_day
+    attempts.group_by(&:year_day)
+  end
+  
+  def active_days
+    attempts_by_day.count
+  end
+  
   def avg_calls_per_day
-    days = attempts.group_by(&:year_day)
-    attempts.count/days.count.to_f
+    attempts.count/active_days.to_f
+  end
+  
+  def new_contacts
+    attempts.group_by(&:company_id)
+  end
+  
+  def avg_new_calls_per_day
+    new_contacts.count/active_days.to_f
+  end
+  
+  def follow_ups_per_day
+    avg_calls_per_day - avg_new_calls_per_day
+  end
+  
+  def attempts_with_email
+    attempts.group_by(&:email)[true]
+  end
+  
+  def emails_per_day
+    attempts_with_email.count/active_days.to_f
+  end
+  
   def attemps_with_sales
     attempts.sales
   end
