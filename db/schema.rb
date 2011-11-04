@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104191339) do
+ActiveRecord::Schema.define(:version => 20111104203012) do
 
   create_table "attempts", :force => true do |t|
     t.datetime "time"
@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(:version => 20111104191339) do
     t.integer  "restaurant_featured_duration", :default => 0, :null => false
     t.integer  "services_duration",            :default => 0, :null => false
     t.integer  "services_featured_duration",   :default => 0, :null => false
-    t.integer  "email_blast_duration",         :default => 0, :null => false
-    t.integer  "ads_duration",                 :default => 0, :null => false
   end
 
   create_table "campaigns", :force => true do |t|

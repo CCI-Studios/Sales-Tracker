@@ -18,7 +18,6 @@
   <%= @company.email %>
 </p>
 
-
 <p><%= @company.attempts.last.time.strftime("Last contacted %A, %B %d, %Y")%> <%= link_to "Details", @company.attempts.last  %></p>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
