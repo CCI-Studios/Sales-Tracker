@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  time: 2011-11-04 00:43:30
+  user_id: 1
+  email: false
+  phone: false
+  fax: false
+
+two:
+  time: 2011-11-04 00:43:30
+  user_id: 1
+  email: false
+  phone: false
+  fax: false

@@ -1,0 +1,26 @@
+body {
+	margin: 0;
+	font-size: 12px;
+	color: #333;
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0 10px;
+	width: 940px;
+}
+
+.menu {
+	margin: 0;
+	padding: 0;
+}
+
+.menu li {
+	display: inline-block;
+	padding: 5px 10px;
+	font-size: 18px;
+}
+
+table {
+	width: 100%;
+}

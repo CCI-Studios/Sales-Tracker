@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p><strong>Campaign</strong>: <%= @attempt.campaign.title %><br/>
+<%= @attempt.time.strftime("Contact made on %A, %B %d") %></p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @attempt.contact.fullname, @attempt.contact %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @attempt.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @attempt.phone %>
+</p>
+
+<p>
+  <b>Fax:</b>
+  <%= @attempt.fax %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_attempt_path(@attempt) %> |
+<%= link_to 'Back', attempts_path %>
