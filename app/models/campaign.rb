@@ -48,4 +48,12 @@ class Campaign < ActiveRecord::Base
   def contacts_per_sale
     attempts.count/attemps_with_sales.count.to_f
   end
+  
+  def units_per_sale
+    attemps_with_sales.collect { |attempt|
+      attempt.off_campus + attempt.off_campus_featured + attempt.restaurant + 
+        attempt.restaurant_featured + attempt.services + attempt.services_featured +
+        attempt.email_blast + attempt.ads
+    }.sum/attemps_with_sales.count.to_f
+  end
 end
