@@ -36,16 +36,27 @@
     <%= f.datetime_select :time %>
   </div>
 	<div class="field">
-    <%= f.label :phone %> <%= f.check_box :phone %>
+    <div class="checkbox"><%= f.label :phone %> <%= f.check_box :phone %></div>
+    <div class="checkbox"><%= f.label :email %> <%= f.check_box :email %></div>
+    <div class="checkbox"><%= f.label :fax %> <%= f.check_box :fax %></div>
+		<div class="clear"></div>
   </div>
-  <div class="field">
-    <%= f.label :email %> <%= f.check_box :email %>
-  </div>
-  <div class="field">
-    <%= f.label :fax %> <%= f.check_box :fax %>
-  </div>
-	
-	
+
+	<h2>Sales Stats</h2>
+	<div class="field">
+		<%= f.label :success %>
+		<%= f.check_box :success %>
+	</div>
+	<div>
+		<div class="field">
+			<%= f.label :value %>
+			<%= f.text_field :value %>
+		</div>
+		<div class="field">
+			<%= f.label :carrot %>
+			<%= f.text_field :carrot %>
+		</div>
+	</div>
 
   <div class="actions">
     <%= f.submit %>

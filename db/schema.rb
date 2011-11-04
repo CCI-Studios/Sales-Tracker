@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104050005) do
+ActiveRecord::Schema.define(:version => 20111104112649) do
 
   create_table "attempts", :force => true do |t|
     t.datetime "time"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(:version => 20111104050005) do
     t.datetime "updated_at"
     t.integer  "contact_id"
     t.integer  "campaign_id"
+    t.boolean  "success"
+    t.integer  "value"
+    t.integer  "carrot"
   end
 
   create_table "campaigns", :force => true do |t|
