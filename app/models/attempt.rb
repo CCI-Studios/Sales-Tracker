@@ -2,9 +2,8 @@ class Attempt < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :company
   
-  scope :sales, lambda {
-    where("value > 0")
-  }
+  scope :sales, where("value > 0")
+  scope :emailed, where(:email => true)
   
   def campaign_name
     campaign.title if campaign
