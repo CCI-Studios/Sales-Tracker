@@ -18,4 +18,8 @@ class Attempt < ActiveRecord::Base
     self.company = Company.find_by_title(name) unless name.blank?
   end
   
+  def year_day
+    self.time.strftime('%Y %j')
+  end
+  
 end
