@@ -24,3 +24,12 @@ body {
 table {
 	width: 100%;
 }
+
+.checkbox {
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+.clear { clear: both; }
+.left { float: left; }
+.right { float: right; }
