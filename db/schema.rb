@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104151812) do
+ActiveRecord::Schema.define(:version => 20111104182432) do
 
   create_table "attempts", :force => true do |t|
     t.datetime "time"
@@ -26,6 +26,22 @@ ActiveRecord::Schema.define(:version => 20111104151812) do
     t.boolean  "success"
     t.integer  "value"
     t.integer  "carrot"
+    t.integer  "off_campus"
+    t.integer  "off_campus_featured"
+    t.integer  "restaurant"
+    t.integer  "restaurant_featured"
+    t.integer  "services"
+    t.integer  "services_featured"
+    t.integer  "email_blast"
+    t.integer  "ads"
+    t.integer  "off_campus_value"
+    t.integer  "off_campus_featured_value"
+    t.integer  "restaurant_value"
+    t.integer  "restaurant_featured_value"
+    t.integer  "services_value"
+    t.integer  "services_featured_value"
+    t.integer  "email_blast_value"
+    t.integer  "ads_value"
   end
 
   create_table "campaigns", :force => true do |t|
