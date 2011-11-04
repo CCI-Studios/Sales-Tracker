@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104185155) do
+ActiveRecord::Schema.define(:version => 20111104191339) do
 
   create_table "attempts", :force => true do |t|
     t.datetime "time"
@@ -26,22 +26,30 @@ ActiveRecord::Schema.define(:version => 20111104185155) do
     t.boolean  "success"
     t.integer  "value"
     t.integer  "carrot"
-    t.integer  "off_campus",                :default => 0, :null => false
-    t.integer  "off_campus_featured",       :default => 0, :null => false
-    t.integer  "restaurant",                :default => 0, :null => false
-    t.integer  "restaurant_featured",       :default => 0, :null => false
-    t.integer  "services",                  :default => 0, :null => false
-    t.integer  "services_featured",         :default => 0, :null => false
-    t.integer  "email_blast",               :default => 0, :null => false
-    t.integer  "ads",                       :default => 0, :null => false
-    t.integer  "off_campus_value",          :default => 0, :null => false
-    t.integer  "off_campus_featured_value", :default => 0, :null => false
-    t.integer  "restaurant_value",          :default => 0, :null => false
-    t.integer  "restaurant_featured_value", :default => 0, :null => false
-    t.integer  "services_value",            :default => 0, :null => false
-    t.integer  "services_featured_value",   :default => 0, :null => false
-    t.integer  "email_blast_value",         :default => 0, :null => false
-    t.integer  "ads_value",                 :default => 0, :null => false
+    t.integer  "off_campus",                   :default => 0, :null => false
+    t.integer  "off_campus_featured",          :default => 0, :null => false
+    t.integer  "restaurant",                   :default => 0, :null => false
+    t.integer  "restaurant_featured",          :default => 0, :null => false
+    t.integer  "services",                     :default => 0, :null => false
+    t.integer  "services_featured",            :default => 0, :null => false
+    t.integer  "email_blast",                  :default => 0, :null => false
+    t.integer  "ads",                          :default => 0, :null => false
+    t.integer  "off_campus_value",             :default => 0, :null => false
+    t.integer  "off_campus_featured_value",    :default => 0, :null => false
+    t.integer  "restaurant_value",             :default => 0, :null => false
+    t.integer  "restaurant_featured_value",    :default => 0, :null => false
+    t.integer  "services_value",               :default => 0, :null => false
+    t.integer  "services_featured_value",      :default => 0, :null => false
+    t.integer  "email_blast_value",            :default => 0, :null => false
+    t.integer  "ads_value",                    :default => 0, :null => false
+    t.integer  "off_campus_duration",          :default => 0, :null => false
+    t.integer  "off_campus_featured_duration", :default => 0, :null => false
+    t.integer  "restaurant_duration",          :default => 0, :null => false
+    t.integer  "restaurant_featured_duration", :default => 0, :null => false
+    t.integer  "services_duration",            :default => 0, :null => false
+    t.integer  "services_featured_duration",   :default => 0, :null => false
+    t.integer  "email_blast_duration",         :default => 0, :null => false
+    t.integer  "ads_duration",                 :default => 0, :null => false
   end
 
   create_table "campaigns", :force => true do |t|
