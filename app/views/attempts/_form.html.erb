@@ -13,22 +13,12 @@
 
 	<div class="field">
 		<%= f.label :campaign_name %>
-		<%= text_field_with_auto_complete :attempt, :campaign_name,
-			{ :size => 15 },
-			{ :url => campaigns_path(:json), 
-				:method => :get, 
-				:tokens => %w[title],
-				:with => "'search=' + element.value" } %>
+		<%= f.autocomplete_field :campaign_name, autocomplete_campaign_title_attempts_path %>
 	</div>
 	
 	<div class="field">
-		<%= f.label :contact_name %>
-		<%= text_field_with_auto_complete :attempt, :contact_name,
-			{ :size => 15 },
-			{ :url => contacts_path(:json), 
-				:method => :get, 
-				:tokens => %w[fullname],
-				:with => "'search=' + element.value" } %>
+		<%= f.label :company_name %>
+		<%= f.autocomplete_field :company_name, autocomplete_company_title_attempts_path %>
 	</div>
 	
   <div class="field">

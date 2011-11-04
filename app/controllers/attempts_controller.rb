@@ -1,4 +1,7 @@
 class AttemptsController < ApplicationController
+  autocomplete :campaign, :title, :full => true
+  autocomplete :company, :title, :full => true
+  
   # GET /attempts
   # GET /attempts.xml
   def index
@@ -25,6 +28,7 @@ class AttemptsController < ApplicationController
   # GET /attempts/new.xml
   def new
     @attempt = Attempt.new
+    @attempt.campaign_id = 1
 
     respond_to do |format|
       format.html # new.html.erb

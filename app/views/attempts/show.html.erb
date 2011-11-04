@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p><strong>Campaign</strong>: <%= @attempt.campaign.title %><br/>
+<p><strong>Campaign</strong>: <%= @attempt.campaign.title if @attempt.campaign %><br/>
 <%= @attempt.time.strftime("Contact made on %A, %B %d") %></p>
 
 <p>
-  <b>User:</b>
-  <%= link_to @attempt.contact.fullname, @attempt.contact %>
+  <b>Company:</b>
+  <%= link_to(@attempt.company.title, @attempt.company) if @attempt.company %>
 </p>
 
 <p>

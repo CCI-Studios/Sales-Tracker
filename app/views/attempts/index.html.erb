@@ -2,26 +2,21 @@
 
 <table>
   <tr>
-    <th>Time</th>
-    <th>User</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Fax</th>
-    <th></th>
-    <th></th>
+   	<th>Time</th>
+    <th>Company</th>
+		<th>Value</th>
     <th></th>
   </tr>
 
 <% @attempts.each do |attempt| %>
   <tr>
-    <td><%= attempt.time %></td>
-    <td><%= attempt.user_id %></td>
-    <td><%= attempt.email %></td>
-    <td><%= attempt.phone %></td>
-    <td><%= attempt.fax %></td>
-    <td><%= link_to 'Show', attempt %></td>
-    <td><%= link_to 'Edit', edit_attempt_path(attempt) %></td>
-    <td><%= link_to 'Destroy', attempt, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= attempt.time.strftime("%A, %B %d, %Y") %></td>
+    <td><%= attempt.company.title if attempt.company %></td>
+    <td><%= attempt.value %></td>
+    <td>
+			<%= link_to 'Show', attempt %>
+			<%= link_to 'Edit', edit_attempt_path(attempt) %>
+		</td>
   </tr>
 <% end %>
 </table>
