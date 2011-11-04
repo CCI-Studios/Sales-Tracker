@@ -5,11 +5,13 @@
   <%= @campaign.title %>
 </p>
 
+<h2>Revenue Details</h2>
 <p>
   <b>Start date:</b>
   <%= @campaign.start_date %>
 	Total Contacts: <%= @campaign.attempts.count %><br>
 	Total Sales: <%= number_to_currency @campaign.total_revenue %><br>
+	Revenue/Contact: <%= @campaign.revenue_per_contact %><br>
 </p>
 
 <h2>Contacts Details</h2>
