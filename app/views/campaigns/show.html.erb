@@ -8,6 +8,8 @@
 <p>
   <b>Start date:</b>
   <%= @campaign.start_date %>
+	Total Contacts: <%= @campaign.attempts.count %><br>
+	Total Sales: <%= number_to_currency @campaign.total_revenue %><br>
 </p>
 
 <h2>Contacts Details</h2>
