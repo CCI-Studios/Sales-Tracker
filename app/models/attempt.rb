@@ -2,6 +2,10 @@ class Attempt < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :company
   
+  scope :sales, lambda {
+    where("value > 0")
+  }
+  
   def campaign_name
     campaign.title if campaign
   end
