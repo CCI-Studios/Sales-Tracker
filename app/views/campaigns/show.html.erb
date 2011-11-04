@@ -14,7 +14,7 @@
 <p>
 	Total Contacts: <%= @campaign.attempts.count %><br>
 	Total Sales: <%= number_to_currency @campaign.total_revenue %><br>
-	Revenue/Contact: <%= @campaign.revenue_per_contact %><br>
+	Revenue/Contact: <%= number_to_currency @campaign.revenue_per_contact %><br>
 </p>
 
 <h2>Contacts Details</h2>
