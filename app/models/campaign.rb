@@ -22,7 +22,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def revenue_per_contact
-    total_revenue/attempts.count
+    total_revenue/attempts.count.to_f
   end
   
   def avg_calls_per_day
