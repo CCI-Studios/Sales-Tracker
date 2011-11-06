@@ -1,5 +1,5 @@
 
-<% form_for @user, :url => account_path do |f| %>
+<% form_for @user do |f| %>
 	<% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,15 +11,21 @@
       </ul>
     </div>
   <% end %>
+
+	<div class="field">
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
 	
-	<%= form.label :email %><br />
-	<%= form.text_field :email %><br />
-	<br />
-	<%= form.label :password %><br />
-	<%= form.password_field :password %><br />
-	<br />
-	<%= form.label :password_confirmation %><br />
-	<%= form.password_field :password_confirmation %><br />
+	<div class="field">
+		<%= f.label :password %>
+		<%= f.text_field :password %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :password_confirmation %>
+		<%= f.text_field :password_confirmation %>
+	</div>
 	
   <%= f.submit "Register" %>
 <% end %>
