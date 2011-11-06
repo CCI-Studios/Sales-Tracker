@@ -9,6 +9,7 @@ Sales::Application.routes.draw do
   end
   resources :companies
   resources :campaigns
+  resources :users
 
   get "pages/home"
   get "pages/about"
