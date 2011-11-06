@@ -1,12 +1,17 @@
-require 'test_helper'
+require 'spec_helper'
 
-class AttemptTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+describe Attempt do
+  
+  before(:each) do
+    @attr = {
+      :time       => Time.at(0)
+    }
   end
+  
+  it "should do stuff"
+  
+  
 end
-
 # == Schema Information
 #
 # Table name: attempts

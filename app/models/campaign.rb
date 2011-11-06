@@ -84,3 +84,16 @@ class Campaign < ActiveRecord::Base
     total_duration/total_listings.to_f
   end
 end
+
+# == Schema Information
+#
+# Table name: campaigns
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  start_date :date
+#  end_date   :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+
