@@ -8,6 +8,7 @@ Sales::Application.routes.draw do
 
   get "pages/home"
   get "pages/about"
+  get "pages/release_notes"
   
   root :to => "pages#home"
 end
