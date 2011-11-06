@@ -18,6 +18,16 @@
 	  </tr>
 	<% end %>
 	</tbody>
+	
+	<% if @campaigns.total_pages > 1 %>
+		<tfoot>
+			<tr>
+				<td colspan="7" align="center">
+					<%= will_paginate @campaigns %>
+				</td>
+			</tr>
+		</tfoot>
+	<% end %>
 </table>
 
 <br />

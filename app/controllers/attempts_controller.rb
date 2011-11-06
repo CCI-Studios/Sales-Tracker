@@ -7,7 +7,7 @@ class AttemptsController < ApplicationController
   # GET /attempts
   # GET /attempts.xml
   def index
-    @attempts = Attempt.all
+    @attempts = Attempt.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

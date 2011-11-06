@@ -4,11 +4,19 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.xml
   def index
-    @campaigns = Campaign.find(:all, :conditions => ['title LIKE ?', "%#{params[:search]}%"])
+    @campaigns = Campaign.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @campaigns }
+      format.json
+    end
+  end
+  
+  def search
+    @campaigns = Campaign.find(:all, :conditions => ['title LIKE ?', "%#{params[:search]}%"])
+    
+    respond_to do |format|
       format.json
     end
   end

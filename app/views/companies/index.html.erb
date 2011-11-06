@@ -1,27 +1,41 @@
 <h1>Listing Companies</h1>
 
 <table class="styled">
-  <tr>
-    <th>Company Name</th>
-    <th>Contact Name</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<thead>
+	  <tr>
+	    <th>Company Name</th>
+	    <th>Contact Name</th>
+	    <th>Phone</th>
+	    <th>Email</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	</thead>
 
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= company.title %></td>
-    <td><%= company.fullname %></td>
-    <td><%= company.phone %></td>
-    <td><%= company.email %></td>
-    <td><%= link_to 'Show', company %></td>
-    <td><%= link_to 'Edit', edit_company_path(company) %></td>
-    <td><%= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<tbody>
+		<% @companies.each do |company| %>
+		  <tr>
+		    <td><%= company.title %></td>
+		    <td><%= company.fullname %></td>
+		    <td><%= company.phone %></td>
+		    <td><%= company.email %></td>
+		    <td><%= link_to 'Show', company %></td>
+		    <td><%= link_to 'Edit', edit_company_path(company) %></td>
+		    <td><%= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	</tbody>
+	
+	<% if @companies.total_pages > 1 %>
+		<tfoot>
+			<tr>
+				<td colspan="7" align="center">
+					<%= will_paginate @companies %>
+				</td>
+			</tr>
+		</tfoot>
+	<% end %>
 </table>
 
 <br />
