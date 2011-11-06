@@ -12,14 +12,6 @@ class CampaignsController < ApplicationController
       format.json
     end
   end
-  
-  def search
-    @campaigns = Campaign.find(:all, :conditions => ['title LIKE ?', "%#{params[:search]}%"])
-    
-    respond_to do |format|
-      format.json
-    end
-  end
 
   # GET /campaigns/1
   # GET /campaigns/1.xml
