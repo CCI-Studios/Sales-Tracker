@@ -14,7 +14,7 @@ class Attempt < ActiveRecord::Base
   end
   
   def company_name
-    company.fullname if company
+    company.title if company
   end
   
   def company_name=(name)
