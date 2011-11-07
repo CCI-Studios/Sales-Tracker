@@ -16,7 +16,7 @@
 
 - if !@company.attempts.empty?
 	%p
-		= @company.attempts.last.time.strftime("Last contacted %A, %B %d, %Y")
+		= @company.attempts.last.created_at.strftime("Last contacted %A, %B %d, %Y")
 		= link_to "Details", @company.attempts.last
 
 = link_to 'Edit', edit_company_path(@company)

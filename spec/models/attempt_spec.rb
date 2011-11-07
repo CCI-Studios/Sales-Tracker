@@ -12,12 +12,12 @@ describe Attempt do
   
   
 end
+
 # == Schema Information
 #
 # Table name: attempts
 #
 #  id                           :integer         not null, primary key
-#  time                         :datetime
 #  user_id                      :integer
 #  email                        :boolean
 #  phone                        :boolean

@@ -7,6 +7,7 @@ class UserTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: users
@@ -18,5 +19,6 @@ end
 #  persistence_token :string(255)
 #  created_at        :datetime
 #  updated_at        :datetime
+#  admin             :boolean         default(FALSE)
 #
 

@@ -10,10 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111106063158) do
+ActiveRecord::Schema.define(:version => 20111107202834) do
 
   create_table "attempts", :force => true do |t|
-    t.datetime "time"
     t.integer  "user_id"
     t.boolean  "email"
     t.boolean  "phone"

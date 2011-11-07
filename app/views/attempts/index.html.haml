@@ -11,7 +11,7 @@
 	%tbody
 		- @attempts.each do |attempt|
 			%tr
-				%td= attempt.time.strftime("%A, %B %d, %Y")
+				%td= attempt.created_at.strftime("%A, %B %d, %Y")
 				%td= attempt.company.title if attempt.company
 				%td= attempt.value
 				%td 

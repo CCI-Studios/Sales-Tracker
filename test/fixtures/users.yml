@@ -12,6 +12,7 @@ two:
   password_salt: MyString
   persistence_token: MyString
 
+
 # == Schema Information
 #
 # Table name: users
@@ -23,5 +24,6 @@ two:
 #  persistence_token :string(255)
 #  created_at        :datetime
 #  updated_at        :datetime
+#  admin             :boolean         default(FALSE)
 #
 

@@ -22,17 +22,17 @@ class Attempt < ActiveRecord::Base
   end
   
   def year_day
-    self.time.strftime('%Y %j')
+    self.created_at.strftime('%Y %j')
   end
   
 end
+
 
 # == Schema Information
 #
 # Table name: attempts
 #
 #  id                           :integer         not null, primary key
-#  time                         :datetime
 #  user_id                      :integer
 #  email                        :boolean
 #  phone                        :boolean
