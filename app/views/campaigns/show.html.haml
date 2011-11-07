@@ -1,0 +1,40 @@
+%p#notice= notice
+
+%h1
+	= @campaign.title
+	%small= link_to 'Edit', edit_campaign_path(@campaign)
+
+%p
+	%b Start date:
+	= @campaign.start_date
+	%br
+	%b End date:
+	= @campaign.end_date
+
+%h2 Revenue Details
+%p
+	= "Total Contacts: #{@campaign.attempts.count}"
+	%br
+	= "Total Sales: #{number_to_currency @campaign.total_revenue}"
+	%br
+	= "Revenue/Contact: #{number_to_currency @campaign.revenue_per_contact}"
+</p>
+
+%h2 Contacts Details
+%p
+	= "Avg Calls Per Active Day: #{number_with_precision @campaign.avg_calls_per_day, :precision => 2}"
+	%br
+	= "Avg New Calls Per Day: #{number_with_precision @campaign.avg_new_calls_per_day, :precision => 2}"
+	%br
+	= "Follow ups per active day: #{number_with_precision @campaign.follow_ups_per_day, :precision => 2}"
+	%br
+	= "Emails Per Day: #{number_with_precision @campaign.emails_per_day, :precision => 2}"
+	%br
+	= "Contacts Per Sale: #{number_with_precision @campaign.contacts_per_sale, :precision => 2}"
+	%br
+	= "Avg units per sale: #{number_with_precision @campaign.units_per_sale, :precision => 2}"
+	%br
+	= "Ave unit duration: #{number_with_precision @campaign.avg_unit_duration, :precision => 2}"
+</p>
+
+%p= link_to 'Campaigns', campaigns_path
