@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111107202834) do
+ActiveRecord::Schema.define(:version => 20111107203318) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "user_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20111107202834) do
     t.datetime "updated_at"
     t.integer  "company_id"
     t.integer  "campaign_id"
-    t.boolean  "success"
+    t.boolean  "verbal"
     t.integer  "value"
     t.integer  "carrot"
     t.integer  "off_campus",                   :default => 0, :null => false

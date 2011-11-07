@@ -19,6 +19,10 @@
 %p
 	%strong Fax:
 	= @attempt.fax
+
+%p
+	%strong Verbal:
+	= @attempt.verbal ? 'Yes' : 'No'
 	
 = link_to 'Edit', edit_attempt_path(@attempt)
 |
