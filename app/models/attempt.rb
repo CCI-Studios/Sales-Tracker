@@ -10,7 +10,7 @@ class Attempt < ActiveRecord::Base
   end
   
   def campaign_name=(name)
-    self.campaign = Campaign.find_by_title(name) unless name.blank?
+    self.campaign = Campaign.find_by_title(name)
   end
   
   def company_name
@@ -18,7 +18,7 @@ class Attempt < ActiveRecord::Base
   end
   
   def company_name=(name)
-    self.company = Company.find_by_title(name) unless name.blank?
+    self.company = Company.find_by_title(name)
   end
   
   def year_day
