@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+	%strong Company Name:
+	= @company.title
+
+%p
+	%strong Contact Name:
+	= @company.fullname
+
+%p
+	%strong Phone:
+	= @company.phone
+
+%p
+	%strong Email:
+	= @company.email
+
+%p
+	= @company.attempts.last.time.strftime("Last contacted %A, %B %d, %Y")
+	= link_to "Details", @company.attempts.last
+
+= link_to 'Edit', edit_company_path(@company)
+|
+= link_to 'Back', companies_path

@@ -1,0 +1,32 @@
+%h1 Listing Companies
+
+%table.styled
+	%thead
+		%tr
+			%th Company Name
+			%th Contact Name
+			%th Phone
+			%th Email
+			%th &nbsp;
+			%th &nbsp;
+			%th &nbsp;
+
+	%tbody
+		- @companies.each do |company|
+			%tr
+				%td= company.title
+				%td= company.fullname
+				%td= company.phone
+				%td= company.email
+				%td= link_to 'Show', company
+				%td= link_to 'Edit', edit_company_path(company)
+				%td= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete
+	
+	- if @companies.total_pages > 1
+		%tfoot
+			%tr
+				%td{ :colspan => 7, :align => "center" }
+					= will_paginate @companies, :class => "digg_pagination"
+
+%br
+= link_to 'New company', new_company_path
