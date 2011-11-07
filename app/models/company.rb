@@ -2,10 +2,11 @@ class Company < ActiveRecord::Base
   has_many :attempts
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  
   validates :title, :presence => true,
                     :uniqueness => { :case_sensitive => false }
   validates :email, :format => { :with => email_regex, :allow_nil => true, :allow_blank => true }
+  
+  default_scope :order => "LOWER(title) ASC"
   
   def fullname
     "#{last_name}, #{first_name}"

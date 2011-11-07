@@ -2,6 +2,7 @@ class Attempt < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :company
   
+  default_scope :order => 'created_at DESC'
   scope :sales, where("value > 0")
   scope :emailed, where(:email => true)
   

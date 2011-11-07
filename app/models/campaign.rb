@@ -1,6 +1,8 @@
 class Campaign < ActiveRecord::Base
   has_many :attempts
 
+  default_scope :order => "LOWER(title) ASC"
+
   # filters
   def attempts_with_email
     attempts.emailed
