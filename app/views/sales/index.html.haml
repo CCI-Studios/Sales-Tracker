@@ -1,0 +1,28 @@
+%h1 Sales
+
+%table.styled
+	%thead
+		%tr
+			%th Total
+			%th Company
+			%th Campaign
+			%th
+			%th
+
+	%tbody
+		- @sales.each do |sale|
+			%tr
+				%td= sale.total
+				%td= sale.company.title if sale.company
+				%td= sale.campaign.title
+				%td= link_to 'Show', sale
+				%td= link_to 'Edit', edit_sale_path(sale)
+
+	- if @sales.total_pages > 1
+		%tfoot
+			%tr
+				%td{ :colspan => 5, :align => "center" }
+					= will_paginate @sales, :class => 'digg_pagination'
+
+%br
+= link_to 'New Sale', new_sale_path

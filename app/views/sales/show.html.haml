@@ -1,0 +1,15 @@
+%p
+	%strong Total:
+	= @sale.total
+
+%p
+	%strong Company:
+	= !@sale.company.nil? ? link_to(@sale.company.title, @sale.company) : ''
+
+%p
+	%strong Campaign:
+	= @sale.campaign_id
+
+= link_to 'Edit', edit_sale_path(@sale)
+|
+= link_to 'Back', sales_path

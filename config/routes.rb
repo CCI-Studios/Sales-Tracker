@@ -1,4 +1,6 @@
 Sales::Application.routes.draw do
+  resources :sales
+
   resources :user_sessions, :only => [:new, :create, :destroy]
   match '/login',  :to => 'user_sessions#new'
   match '/logout', :to => 'user_sessions#destroy'

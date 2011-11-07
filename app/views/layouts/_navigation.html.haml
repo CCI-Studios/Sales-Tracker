@@ -2,6 +2,7 @@
 	%li= link_to 'Campaigns', campaigns_path
 	%li= link_to 'Companies', companies_path
 	%li= link_to 'Contact Attempts', attempts_path
+	%li= link_to 'Sales', sales_path
 	%li= link_to	'Release Notes', pages_release_notes_path
 	- if current_user && current_user.admin
 		%li= link_to "Users", users_path
