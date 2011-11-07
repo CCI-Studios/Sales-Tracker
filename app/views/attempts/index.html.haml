@@ -1,0 +1,28 @@
+%h1 Listing attempts
+
+%table.styled
+	%thead
+		%tr
+			%th Time
+			%th Company
+			%th Value
+			%th &nbsp;
+
+	%tbody
+		- @attempts.each do |attempt|
+			%tr
+				%td= attempt.time.strftime("%A, %B %d, %Y")
+				%td= attempt.company.title if attempt.company
+				%td= attempt.value
+				%td 
+					= link_to 'Show', attempt
+					= link_to 'Edit', edit_attempt_path(attempt)
+
+	- if @attempts.total_pages > 1
+		%tfoot
+			%tr
+				%td{ :colspan => 7, :align => "center" }
+					= will_paginate @attempts, :class => "digg_pagination"
+
+%br
+= link_to 'New Attempt', new_attempt_path

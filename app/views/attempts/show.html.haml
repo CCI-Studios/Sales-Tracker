@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+	%strong Campaign:
+	= @attempt.campaign.title if @attempt.campaign
+	%br
+	= @attempt.time.strftime("Contact made on %A, %B %d")
+
+%p
+	%strong Company:
+	= link_to(@attempt.company.title, @attempt.company) if @attempt.company
+
+%p
+	%strong Email:
+	= @attempt.email
+
+%p
+	%strong Phone:
+	= @attempt.phone
+
+%p
+	%strong Fax:
+	= @attempt.fax
+	
+= link_to 'Edit', edit_attempt_path(@attempt)
+|
+= link_to 'Back', attempts_path

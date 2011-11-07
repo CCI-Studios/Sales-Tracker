@@ -1,0 +1,108 @@
+= form_for(@attempt) do |f|
+	-if @attempt.errors.any?
+		#error_explanation
+			%h2= "#{pluralize(@attempt.errors.count, "error")} prohibited this attempt from being saved:"
+
+			%ul
+				- @attempt.errors.full_messages.each do |msg|
+					%li= msg
+
+	.field
+		= f.label :campaign_name
+		= f.autocomplete_field :campaign_name, autocomplete_campaign_title_attempts_path
+
+	.field
+		= f.label :company_name
+		= f.autocomplete_field :company_name, autocomplete_company_title_attempts_path
+
+	.field
+		= f.label :time
+		= f.datetime_select :time
+
+	.field
+		.checkbox
+			= f.label :phone
+			= f.check_box :phone
+			%br
+		.checkbox
+			= f.label :email
+			= f.check_box :email
+			%br
+		.checkbox
+			= f.label :fax
+			= f.check_box :fax
+			%br
+	.clear
+
+	%h2 Sales Stats
+	.field
+		= f.label :success
+		= f.check_box :success
+
+		
+	%div
+		.field
+			= f.label :value
+			= f.text_field :value
+
+		.field
+			= f.label :carrot
+			= f.text_field :carrot
+	
+	%h2 Purchase Details
+	%table
+		%tr
+			%th>Type
+			%th>Units
+			%th>Total Value
+			%th>Total Duration (Months)
+			
+		%tr
+			%td Off Campus Listing
+			%td= f.text_field :off_campus
+			%td= f.text_field :off_campus_value
+			%td= f.text_field :off_campus_duration
+
+		%tr
+			%td Off Campus Featured Listing
+			%td= f.text_field :off_campus_featured
+			%td= f.text_field :off_campus_featured_value
+			%td= f.text_field :off_campus_featured_duration
+		
+		%tr
+			%td Restaurant Listing
+			%td= f.text_field :restaurant
+			%td= f.text_field :restaurant_value
+			%td= f.text_field :restaurant_duration
+
+		%tr
+			%td Restaurant Featured Listing
+			%td= f.text_field :restaurant_featured
+			%td= f.text_field :restaurant_featured_value
+			%td= f.text_field :restaurant_featured_duration
+		
+		%tr
+			%td Service Listing
+			%td= f.text_field :services
+			%td= f.text_field :services_value
+			%td= f.text_field :services_duration
+		%tr
+			%td Service Featured Listing
+			%td= f.text_field :services_featured
+			%td= f.text_field :services_featured_value
+			%td= f.text_field :services_featured_duration
+		</tr>
+		
+		%tr
+			%td Ads
+			%td= f.text_field :ads
+			%td= f.text_field :ads_value
+			%td &nbsp;
+		
+		%tr
+			%td Email Blasts
+			%td= f.text_field :email_blast
+			%td= f.text_field :email_blast_value
+	
+	.actions
+		= f.submit
