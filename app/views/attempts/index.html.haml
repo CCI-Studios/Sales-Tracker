@@ -3,18 +3,20 @@
 %table.styled
 	%thead
 		%tr
-			%th Time
+			%th{ :width => 175 } Time
 			%th Company
-			%th Value
-			%th &nbsp;
+			%th{ :width => 125 } Estimated Value
+			%th{ :width => 75 } Verbal
+			%th{ :width => 75 } &nbsp;
 
 	%tbody
 		- @attempts.each do |attempt|
 			%tr
-				%td= attempt.created_at.strftime("%A, %B %d, %Y")
+				%td{ :align => "center" }= attempt.created_at.strftime("%A, %B %d, %Y")
 				%td= attempt.company.title if attempt.company
-				%td= attempt.value
-				%td 
+				%td{ :align => "center" }= number_to_currency attempt.value
+				%td{ :align => "center" }= attempt.verbal ? 'Yes' : ''
+				%td{ :align => "center" }
 					= link_to 'Show', attempt
 					= link_to 'Edit', edit_attempt_path(attempt)
 
