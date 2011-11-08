@@ -7,4 +7,7 @@ class Sale < ActiveRecord::Base
   
   default_scope :order => "created_at DESC"
   
+  def year_day
+    self.created_at.strftime('%Y %j')
+  end
 end

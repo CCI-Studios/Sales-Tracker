@@ -21,7 +21,7 @@ class Campaign < ActiveRecord::Base
   
   # calcs
   def total_revenue
-    attempts.collect(&:value).compact.sum
+    sales.collect(&:total).compact.sum
   end
 
   def revenue_per_contact
@@ -49,37 +49,34 @@ class Campaign < ActiveRecord::Base
     attempts_with_email.count/active_days.to_f
   end
   
-  def attemps_with_sales
-    attempts.sales
-  end
   
   def contacts_per_sale
-    attempts.count/attemps_with_sales.count.to_f
+    attempts.count/sales.count.to_f
   end
   
   def units_per_sale
-    total_units/attemps_with_sales.count.to_f
+    total_units/sales.count.to_f
   end
   
   def total_duration 
-    attemps_with_sales.collect { |attempt|
-      attempt.off_campus_duration + attempt.off_campus_featured_duration + attempt.restaurant_duration +
-        attempt.restaurant_featured_duration + attempt.services_duration + attempt.services_featured_duration
+    sales.collect { |sale|
+      sale.off_campus_duration + sale.off_campus_featured_duration + sale.restaurant_duration +
+        sale.restaurant_featured_duration + sale.services_duration + sale.services_featured_duration
     }.sum
   end
   
   def total_units
-    attemps_with_sales.collect { |attempt|
-      attempt.off_campus + attempt.off_campus_featured + attempt.restaurant + 
-        attempt.restaurant_featured + attempt.services + attempt.services_featured +
-        attempt.email_blast + attempt.ads
+    sales.collect { |sale|
+      sale.off_campus + sale.off_campus_featured + sale.restaurant + 
+        sale.restaurant_featured + sale.services + sale.services_featured +
+        sale.email_blast + sale.ads
     }.sum
   end
   
   def total_listings
-    attemps_with_sales.collect { |attempt|
-      attempt.off_campus + attempt.off_campus_featured + attempt.restaurant + 
-        attempt.restaurant_featured + attempt.services + attempt.services_featured
+    sales.collect { |sale|
+      sale.off_campus + sale.off_campus_featured + sale.restaurant + 
+        sale.restaurant_featured + sale.services + sale.services_featured
     }.sum
   end
   
