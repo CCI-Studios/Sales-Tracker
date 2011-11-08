@@ -1,5 +1,6 @@
 class Campaign < ActiveRecord::Base
   has_many :attempts
+  has_many :sales
 
   default_scope :order => "LOWER(title) ASC"
 

@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
   has_many :attempts
+  has_many :sales
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :title, :presence => true,
