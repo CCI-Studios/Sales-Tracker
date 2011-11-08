@@ -1,6 +1,7 @@
 class Attempt < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :company
+  belongs_to :user
   
   default_scope :order => 'created_at DESC'
   scope :sales, where("value > 0")

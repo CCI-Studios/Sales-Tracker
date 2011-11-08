@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   
+  has_many :attempts
+  has_many :sales
+  
   acts_as_authentic do |c|
     c.login_field = :email
   end

@@ -1,6 +1,8 @@
 class Sale < ActiveRecord::Base
-  belongs_to :company
   belongs_to :campaign
+  belongs_to :company
+  belongs_to :user
+  
   
   validates_presence_of :campaign_id
   validates_presence_of :company_id
