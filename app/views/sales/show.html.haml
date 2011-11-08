@@ -1,14 +1,73 @@
 %p
-	%strong Total:
-	= @sale.total
-
-%p
 	%strong Company:
 	= !@sale.company.nil? ? link_to(@sale.company.title, @sale.company) : ''
 
 %p
 	%strong Campaign:
-	= @sale.campaign_id
+	= !@sale.campaign.nil? ? link_to(@sale.campaign.title, @sale.campaign) : ''
+	
+%p
+	%strong Total:
+	= number_to_currency @sale.total
+	%br
+	%strong Carrot:
+	= number_to_currency @sale.carrot
+	
+%h2 Sale Details
+%table
+	%tr
+		%th Type
+		%th{ :width => 50 } Units
+		%th{ :width => 150 } Total Value
+		%th{ :width => 150 } Total Duration (Months)
+
+	%tr
+		%td Off Campus Listing
+		%td{ :align => "center" }= @sale.off_campus
+		%td{ :align => "center" }= number_to_currency @sale.off_campus_value
+		%td{ :align => "center" }= @sale.off_campus_duration
+
+	%tr
+		%td Off Campus Featured Listing
+		%td{ :align => "center" }= @sale.off_campus_featured
+		%td{ :align => "center" }= number_to_currency @sale.off_campus_featured_value
+		%td{ :align => "center" }= @sale.off_campus_featured_duration
+
+	%tr
+		%td Restaurant Listing
+		%td{ :align => "center" }= @sale.restaurant
+		%td{ :align => "center" }= number_to_currency @sale.restaurant_value
+		%td{ :align => "center" }= @sale.restaurant_duration
+
+	%tr
+		%td Restaurant Featured Listing
+		%td{ :align => "center" }= @sale.restaurant_featured
+		%td{ :align => "center" }= number_to_currency @sale.restaurant_featured_value
+		%td{ :align => "center" }= @sale.restaurant_featured_duration
+
+	%tr
+		%td Service Listing
+		%td{ :align => "center" }= @sale.services
+		%td{ :align => "center" }= number_to_currency @sale.services_value
+		%td{ :align => "center" }= @sale.services_duration
+	%tr
+		%td Service Featured Listing
+		%td{ :align => "center" }= @sale.services_featured
+		%td{ :align => "center" }= number_to_currency @sale.services_featured_value
+		%td{ :align => "center" }= @sale.services_featured_duration
+
+	%tr
+		%td Ads
+		%td{ :align => "center" }= @sale.ads
+		%td{ :align => "center" }= number_to_currency @sale.ads_value
+		%td &nbsp;
+
+	%tr
+		%td Email Blasts
+		%td{ :align => "center" }= @sale.email_blast
+		%td{ :align => "center" }= number_to_currency @sale.email_blast_value
+		%td &nbsp;
+
 
 = link_to 'Edit', edit_sale_path(@sale)
 |

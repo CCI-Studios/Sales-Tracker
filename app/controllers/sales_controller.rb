@@ -1,4 +1,7 @@
 class SalesController < ApplicationController
+  autocomplete :campaign, :title, :full => true
+  autocomplete :company, :title, :full => true
+  
   # GET /sales
   # GET /sales.xml
   def index
@@ -25,6 +28,7 @@ class SalesController < ApplicationController
   # GET /sales/new.xml
   def new
     @sale = Sale.new
+    @sale.campaign_id = 1
 
     respond_to do |format|
       format.html # new.html.erb

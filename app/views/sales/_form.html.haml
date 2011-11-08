@@ -8,19 +8,79 @@
 					%li= msg
 
 	.field
+		= label :campaign_name, :campaign_name
+		= f.hidden_field :campaign_id
+		= autocomplete_field_tag :campaign_name, @sale.campaign ? @sale.campaign.title : '', autocomplete_campaign_title_sales_path, :id_element => "#sale_campaign_id"
+
+	.field
+		= label :company_name, :company_name
+		= f.hidden_field :company_id
+		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id'
+	
+	%h2 Sale Amount
+	.field
 		= f.label :total
 		%br
 		= f.text_field :total
-
+		
 	.field
-		= f.label :company_id
+		= f.label :carrot
 		%br
-		= f.text_field :company_id
+		= f.text_field :carrot
+		
+	%h2 Sale Details
+	%table
+		%tr
+			%th>Type
+			%th>Units
+			%th>Total Value
+			%th>Total Duration (Months)
 
-	.field
-		= f.label :campaign_id
-		%br
-		= f.text_field :campaign_id
+		%tr
+			%td Off Campus Listing
+			%td= f.text_field :off_campus
+			%td= f.text_field :off_campus_value
+			%td= f.text_field :off_campus_duration
+
+		%tr
+			%td Off Campus Featured Listing
+			%td= f.text_field :off_campus_featured
+			%td= f.text_field :off_campus_featured_value
+			%td= f.text_field :off_campus_featured_duration
+
+		%tr
+			%td Restaurant Listing
+			%td= f.text_field :restaurant
+			%td= f.text_field :restaurant_value
+			%td= f.text_field :restaurant_duration
+
+		%tr
+			%td Restaurant Featured Listing
+			%td= f.text_field :restaurant_featured
+			%td= f.text_field :restaurant_featured_value
+			%td= f.text_field :restaurant_featured_duration
+
+		%tr
+			%td Service Listing
+			%td= f.text_field :services
+			%td= f.text_field :services_value
+			%td= f.text_field :services_duration
+		%tr
+			%td Service Featured Listing
+			%td= f.text_field :services_featured
+			%td= f.text_field :services_featured_value
+			%td= f.text_field :services_featured_duration
+
+		%tr
+			%td Ads
+			%td= f.text_field :ads
+			%td= f.text_field :ads_value
+			%td &nbsp;
+
+		%tr
+			%td Email Blasts
+			%td= f.text_field :email_blast
+			%td= f.text_field :email_blast_value
 
 	.actions
 		= f.submit

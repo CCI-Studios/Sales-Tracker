@@ -3,20 +3,20 @@
 %table.styled
 	%thead
 		%tr
-			%th Total
+			%th{ :width => 100 } Total
 			%th Company
 			%th Campaign
-			%th
-			%th
+			%th{ :width => 75 }
 
 	%tbody
 		- @sales.each do |sale|
 			%tr
-				%td= sale.total
+				%td{ :align => "center" }= number_to_currency sale.total
 				%td= sale.company.title if sale.company
 				%td= sale.campaign.title
-				%td= link_to 'Show', sale
-				%td= link_to 'Edit', edit_sale_path(sale)
+				%td
+					= link_to 'Show', sale
+					= link_to 'Edit', edit_sale_path(sale)
 
 	- if @sales.total_pages > 1
 		%tfoot
