@@ -29,6 +29,7 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
     @sale.campaign_id = 1
+    @sale.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb

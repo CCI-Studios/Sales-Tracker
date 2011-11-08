@@ -7,6 +7,8 @@
 				- @sale.errors.full_messages.each do |msg|
 					%li= msg
 
+	= f.hidden_field :user_id
+
 	.field
 		= label :campaign_name, :campaign_name
 		= f.hidden_field :campaign_id

@@ -21,6 +21,7 @@ class AttemptsController < ApplicationController
   def new
     @attempt = Attempt.new
     @attempt.campaign_id = 1
+    @attempt.user = current_user
   end
 
   # GET /attempts/1/edit
