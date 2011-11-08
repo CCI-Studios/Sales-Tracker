@@ -8,6 +8,9 @@
 	%br
 	%b End date:
 	= @campaign.end_date
+	%br
+	%b Revenue Goal:
+	= number_to_currency @campaign.goal
 
 %h2 Revenue Details
 %p
