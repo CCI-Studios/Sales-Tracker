@@ -14,7 +14,7 @@
 				%td= link_to campaign.title, campaign
 				%td= campaign.start_date
 				%td= campaign.end_date
-				%td{ :align => "center" }= !campaign.goal.nil? ? number_with_precision(campaign.total_revenue / campaign.goal.to_f * 100, :precision => 2) + '%' : ''
+				%td{ :align => "center" }= number_with_precision campaign.goal_percent, :precision => 2
 	
 	- if @campaigns.total_pages > 1
 		%tfoot

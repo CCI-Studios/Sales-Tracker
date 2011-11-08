@@ -35,6 +35,11 @@ class Campaign < ActiveRecord::Base
   def avg_new_calls_per_day
     initial_contacts.count/active_days.to_f
   end
+
+  def goal_percent
+    return '-' if goal.nil?
+    total_revenue / goal.to_f * 100
+  end
   
   # counts
   def active_days
