@@ -4,21 +4,25 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   def index
     @campaigns = Campaign.page(params[:page])
+    @title = "Campaigns"
   end
 
   # GET /campaigns/1
   def show
     @campaign = Campaign.find(params[:id])
+    @title = @campaign.title
   end
 
   # GET /campaigns/new
   def new
     @campaign = Campaign.new
+    @title = "New Campaign"
   end
 
   # GET /campaigns/1/edit
   def edit
     @campaign = Campaign.find(params[:id])
+    @title = "Editing #{@campaign.title}"
   end
 
   # POST /campaigns

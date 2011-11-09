@@ -6,6 +6,7 @@ class SalesController < ApplicationController
   # GET /sales.xml
   def index
     @sales = Sale.page(params[:page])
+    @title = "Sales"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +18,7 @@ class SalesController < ApplicationController
   # GET /sales/1.xml
   def show
     @sale = Sale.find(params[:id])
+    @title = "Sale ##{@sale.id}"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,6 +32,7 @@ class SalesController < ApplicationController
     @sale = Sale.new
     @sale.campaign_id = 1
     @sale.user = current_user
+    @title = "New Sale"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +43,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @sale = Sale.find(params[:id])
+    @title = "Editing Sale ##{@sale.id}"
   end
 
   # POST /sales

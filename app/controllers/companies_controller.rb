@@ -4,21 +4,25 @@ class CompaniesController < ApplicationController
   # GET /companies
   def index
     @companies = Company.page(params[:page])
+    @title = "Companies"
   end
 
   # GET /companies/1
   def show
     @company = Company.find(params[:id])
+    @title = @company.title
   end
 
   # GET /companies/new
   def new
     @company = Company.new
+    @title = "New Company"
   end
 
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
+    @title = "Editing #{@company.title}"
   end
 
   # POST /companies

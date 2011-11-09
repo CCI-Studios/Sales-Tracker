@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
   
   def release_notes
+    @title = "Release Notes"
   end
 
 end

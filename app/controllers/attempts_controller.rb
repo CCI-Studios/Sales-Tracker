@@ -8,12 +8,14 @@ class AttemptsController < ApplicationController
   # GET /attempts.xml
   def index
     @attempts = Attempt.page(params[:page])
+    @title = "Contact Attempts"
   end
 
   # GET /attempts/1
   # GET /attempts/1.xml
   def show
     @attempt = Attempt.find(params[:id])
+    @title = "Attempt ##{@attempt.id}"
   end
 
   # GET /attempts/new
@@ -22,11 +24,13 @@ class AttemptsController < ApplicationController
     @attempt = Attempt.new
     @attempt.campaign_id = 1
     @attempt.user = current_user
+    @title = "New Contact Attempt"
   end
 
   # GET /attempts/1/edit
   def edit
     @attempt = Attempt.find(params[:id])
+    @title = "Editing Attempt ##{@attempt.id}"
   end
 
   # POST /attempts
