@@ -18,7 +18,7 @@
 	%br
 	= "Total Sales: #{@campaign.sales.count}"
 	%br
-	= "Total Sales: #{number_to_currency @campaign.total_revenue}"
+	= "Total Sales Revenue: #{number_to_currency @campaign.total_revenue}"
 	%br
 	= "Revenue/Contact: #{number_to_currency @campaign.revenue_per_contact}"
 </p>
