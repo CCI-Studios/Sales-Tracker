@@ -1,6 +1,9 @@
 class Campaign < ActiveRecord::Base
   has_many :attempts
   has_many :sales
+  
+  validates :title, :presence => true
+    
 
   default_scope :order => "LOWER(title) ASC"
 
