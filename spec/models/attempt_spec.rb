@@ -2,13 +2,6 @@ require 'spec_helper'
 
 describe Attempt do
   
-  before(:each) do
-    @attr = {
-      :time       => Time.at(0)
-    }
-  end
-  
-  it "should do stuff"
   
   
 end
