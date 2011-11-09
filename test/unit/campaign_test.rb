@@ -7,6 +7,7 @@ class CampaignTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: campaigns
@@ -17,5 +18,6 @@ end
 #  end_date   :date
 #  created_at :datetime
 #  updated_at :datetime
+#  goal       :integer
 #
 

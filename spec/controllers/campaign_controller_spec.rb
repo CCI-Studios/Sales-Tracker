@@ -2,19 +2,46 @@ require 'spec_helper'
 
 describe CampaignsController do
   render_views
+  
+  describe "for non-signed-in users" do
+		it "should deny access to index" do
+		  get :index
+		  response.should redirect_to(new_user_session_path)
+	  end
+	  
+	  it "should deny access to show" do
+		  get :show
+		  response.should redirect_to(new_user_session_path)
+	  end
+	  
+	  it "should deny access to edit" do
+		  get :index
+		  response.should redirect_to(new_user_session_path)
+	  end
+	  
+	  it "should deny access to new" do
+		  get :index
+		  response.should redirect_to(new_user_session_path)
+	  end
+	  
+	end
 
-	describe "GET 'index'" do
-	
-		describe "for non-signed-in users" do
-			it "should deny access" do
-			  get :index
-			  response.should redirect_to(new_user_session_path)
-		  end
-		end
-			
+	describe "GET 'index'" do	
 		describe "for signed-in users" do
-			it "should be successful"
-			it "should have the right title"
+		  before(:each) do
+		    @user = test_sign_in(Factory(:user))
+	    end
+		  
+			it "should be successful" do
+			  get :index
+			  response.should be_successful
+		  end
+		  
+			it "should have the right title" do 
+			  get :index
+			  response.should have_selector(:title, :content => "Campaigns")
+		  end
+		  
 			it "should have an element for each campaign"
 			it "should have an element for each start date"
 			it "should have an element for each end date"
