@@ -1,4 +1,6 @@
 class SalesController < ApplicationController
+  before_filter :require_user
+  
   autocomplete :campaign, :title, :full => true
   autocomplete :company, :title, :full => true
   
