@@ -3,6 +3,13 @@ require 'spec_helper'
 describe CampaignsController do
   render_views
   
+  describe "GET 'index'"  do
+    describe "for non-signed in users" do
+    end
+  end
+
+
+  
   describe "for non-signed-in users" do
 		it "should deny access to index" do
 		  get :index
@@ -10,17 +17,19 @@ describe CampaignsController do
 	  end
 	  
 	  it "should deny access to show" do
-		  get :show
+	    campaign = Factory(:campaign)
+		  get :show, :id => campaign.id
 		  response.should redirect_to(new_user_session_path)
 	  end
 	  
 	  it "should deny access to edit" do
-		  get :index
+	    campaign = Factory(:campaign)
+		  get :edit, :id => campaign.id
 		  response.should redirect_to(new_user_session_path)
 	  end
 	  
 	  it "should deny access to new" do
-		  get :index
+		  get :new
 		  response.should redirect_to(new_user_session_path)
 	  end
 	  
@@ -51,7 +60,7 @@ describe CampaignsController do
 	end
 	
 	describe "GET 'show'" do
-		it "should be successful"
+		it "should be successful"	  
 		it "should find the right campaign"
 		it "should have the right title"
 		it "should include the campaign's name"

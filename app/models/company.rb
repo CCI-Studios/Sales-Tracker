@@ -10,7 +10,11 @@ class Company < ActiveRecord::Base
   default_scope :order => "LOWER(title) ASC"
   
   def fullname
-    "#{last_name}, #{first_name}"
+    if last_name && first_name
+      "#{last_name}, #{first_name}"
+    else
+      "#{last_name}#{first_name}"
+    end
   end
 end
 

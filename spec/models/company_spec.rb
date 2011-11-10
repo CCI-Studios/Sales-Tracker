@@ -58,6 +58,23 @@ describe Company do
       company.should_not be_valid
     end
   end
+  
+  describe "fullname" do
+    it "should return the correct name" do
+        company = Company.new(@attr)
+        company.fullname.should == "Blow, Joe"
+    end
+    
+    it "should have the right name if there is no first name" do
+      company = Company.new(@attr.merge(:first_name => nil))
+      company.fullname.should == "Blow"
+    end
+    
+    it "should have the right name if there is no last name" do
+      company = Company.new(@attr.merge(:last_name => nil))
+      company.fullname.should == "Joe"
+    end
+  end
 end
 # == Schema Information
 #
