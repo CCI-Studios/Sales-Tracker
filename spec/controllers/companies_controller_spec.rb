@@ -6,7 +6,6 @@ describe CompaniesController do
 		describe "for non-signed-in users" do
 			it "should deny access"
 		end
-			
 		describe "for signed-in users" do
 			it "should be successful"
 			it "should have the right title"
@@ -23,60 +22,90 @@ describe CompaniesController do
 	end
 		
 	describe "GET 'show'" do
-		it "should be successful"
-		it "should find the right company"
-		it "should have the right title"
-		it "should have the company name"
-		it "should have the contact name"
-		it "should have the phone number"
-		it "should have the email"
-		it "should have the last contact date"
-		it "should have a link to last contact details"
-		it "should have a link to edit the company"
-		it "should have a link to go back to the index"
+		describe "for non-signed-in users" do
+			it "should deny access"
+		end
+		describe "for signed-in users" do
+			it "should be successful"
+			it "should find the right company"
+			it "should have the right title"
+			it "should have the company name"
+			it "should have the contact name"
+			it "should have the phone number"
+			it "should have the email"
+			it "should have the last contact date"
+			it "should have a link to last contact details"
+			it "should have a link to edit the company"
+			it "should have a link to go back to the index"
+		end
 	end
 	
 	describe "GET 'new'" do
-		
-		describe "failure" do
-			it "should have the right title"
-			it "should render the 'new' page"
-			it "should not create a new company"
+		describe "for non-signed-in users" do
+			it "should deny access"
 		end
-		
-		describe "success" do
-			it "should create a company"
-			it "should redirect to the company show page"
-			it "should have a success message"
+		describe "for signed-in users" do
+			describe "failure" do
+				it "should have the right title"
+				it "should render the 'new' page"
+				it "should not create a new company"
+			end
+			
+			describe "success" do
+				it "should create a company"
+				it "should redirect to the company show page"
+				it "should have a success message"
+			end
 		end
 	end
 	
 	describe "GET 'edit'" do
-		it "should be successful"
-		it "should have the right title"
-		it "should have a title field"
-		it "should have a first name field"
-		it "should have a last name field"
-		it "should have a phone number field"
-		it "should have an email field"
-		it "should have a link to the the show page"
-		it "should have a link back to the index"
+		describe "for non-signed-in users" do
+			it "should deny access"
+		end
+		describe "for signed-in users" do
+			it "should be successful"
+			it "should have the right title"
+			it "should have a title field"
+			it "should have a first name field"
+			it "should have a last name field"
+			it "should have a phone number field"
+			it "should have an email field"
+			it "should have a link to the the show page"
+			it "should have a link back to the index"
+		end
 	end
 	
 	describe "PUT 'update'" do
-		describe "failure" do
-			it "should render the 'edit' page"
-			it "should have the right title"
+		describe "for non-signed-in users" do
+			it "should deny access"
 		end
-		
-		describe "success" do
-			it "should change the company's attributes"
-			it "should display a success message"
+		describe "for signed-in users" do
+			describe "failure" do
+				it "should render the 'edit' page"
+				it "should have the right title"
+			end
+			
+			describe "success" do
+				it "should change the company's attributes"
+				it "should display a success message"
+			end
 		end
 	end
 		
 	describe "DELETE 'destroy'" do
-			it "should destroy the company"
-			it "should display a confirmation dialogue"
+		describe "for non-signed-in users" do
+			it "should deny access"
+		end
+		describe "for signed-in users" do
+			describe "as a non-admin user" do
+				it "should protect the action"
+			end
+
+			describe "as an admin user" do
+				it "should destroy the attempt"
+				it "should redirect to the index"
+			end
+		end
 	end		
 end
