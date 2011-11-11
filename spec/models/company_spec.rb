@@ -33,6 +33,8 @@ describe Company do
     company.should_not be_valid
   end
   
+  it "should require some form of contact"
+  
   it "should allow nil email" do
     company = Company.new(@attr.merge(:email => nil))
     company.should be_valid
@@ -58,6 +60,9 @@ describe Company do
       company.should_not be_valid
     end
   end
+  
+  it "should accept valid phone numbers"
+  it "should reject invalid phone numbers"
   
   describe "fullname" do
     it "should return the correct name" do

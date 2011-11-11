@@ -18,9 +18,11 @@ describe Campaign do
     c = Campaign.new(@attr.merge(:title => ""))
     c.should_not be_valid
   end
-    
+  
+  it "should reject duplicate titles"
 	it "should reject names that are too long"
 	it "should reject goals that are too large"
+	it "should reject goats that are negative"
 	
 end
 
