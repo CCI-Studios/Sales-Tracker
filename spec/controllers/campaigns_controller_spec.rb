@@ -82,6 +82,7 @@ describe CampaignsController do
   		it "should have the avg units per sale"
   		it "should have the avg unit duration"
   		it "should have a link back to the campaigns index"
+		it "should redirect back to the index if the campaign doesn't exist"
 		end
 	end
 		
@@ -145,6 +146,7 @@ describe CampaignsController do
   		it "should have a goal field"
   		it "should have a link to the show page"
   		it "should have a link back to the campaigns page"
+		it "should redirect back to the index if the company doesn't exist"
 		end
 	end
 	

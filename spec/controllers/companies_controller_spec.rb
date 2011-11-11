@@ -37,6 +37,7 @@ describe CompaniesController do
 			it "should have a link to last contact details"
 			it "should have a link to edit the company"
 			it "should have a link to go back to the index"
+			it "should redirect back to the index if the company doesn't exist"
 		end
 	end
 	
@@ -73,6 +74,7 @@ describe CompaniesController do
 			it "should have an email field"
 			it "should have a link to the the show page"
 			it "should have a link back to the index"
+			it "should redirect back to the index if the company doesn't exist"
 		end
 	end
 	

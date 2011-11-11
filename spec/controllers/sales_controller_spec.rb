@@ -32,6 +32,7 @@ describe SalesController do
 		it "should have the sale details table"
 		it "should have a link to the edit page"
 		it "should have a link back to the index"
+		it "should redirect back to the index if the sale doesn't exist"
 	end
   end
 
@@ -84,6 +85,7 @@ describe SalesController do
 		it "should have fields for the sale details"
 		it "should have a link to the show page"
 		it "should have a link back to the index"
+		it "should redirect back to the index if the sale doesn't exist"
 	end
   end
 

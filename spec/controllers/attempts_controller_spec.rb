@@ -36,6 +36,7 @@ describe AttemptsController do
 			it "should have an element for the verbal"
 			it "should have a link to the edit page"
 			it "should have a link back to the index"
+			it "should redirect back to the index if the attempt doesn't exist"
 		end
 	end
 
@@ -91,6 +92,7 @@ describe AttemptsController do
 			it "should have a field for the value"
 			it "should have a link to the show page"
 			it "should have a link back to the index"
+			it "should redirect back to the index if the attempt doesn't exist"
 		end
 	end
 
