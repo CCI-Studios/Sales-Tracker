@@ -22,7 +22,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1/edit
   def edit
     @campaign = Campaign.find(params[:id])
-    @title = "Editing #{@campaign.title}"
+    @title = "Editing Campaign"
   end
 
   # POST /campaigns
@@ -30,8 +30,9 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new(params[:campaign])
 
     if @campaign.save
-      redirect_to(@campaign, :notice => 'Campaign was successfully created.')
+      redirect_to @campaign, :flash => { :success => 'Campaign was successfully created' }
     else
+      @title = "New Campaign"
       render :action => "new"
     end
   end
@@ -41,8 +42,9 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
 
     if @campaign.update_attributes(params[:campaign])
-      redirect_to(@campaign, :notice => 'Campaign was successfully updated.')
+      redirect_to @campaign, :flash => { :success => 'Campaign was successfully updated' }
     else
+      @title = "Editing Campaign"
       render :action => "edit"
     end
   end

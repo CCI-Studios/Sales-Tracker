@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
-    @title = "Editing #{@company.title}"
+    @title = "Editing Company"
   end
 
   # POST /companies
@@ -30,7 +30,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(params[:company])
 
     if @company.save
-      redirect_to(@company, :notice => 'company was successfully created.')
+      redirect_to(@company, :flash => { :success => 'Company was successfully created' })
     else
       render :action => "new"
     end
@@ -41,8 +41,9 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
 
     if @company.update_attributes(params[:company])
-      redirect_to(@company, :notice => 'company was successfully updated.')
+      redirect_to(@company, :flash => { :success => 'Company was successfully updated' })
     else
+      @title = "Editing Company"
       render :action => "edit"
     end
   end

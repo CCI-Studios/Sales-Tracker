@@ -21,116 +21,63 @@ describe Sale do
   
   it "should reject campaign names that are too long"
   
-  
   it "should require a company" do
     sale = Sale.new(@attr.merge(:company => nil))
     sale.should_not be_valid
   end
   
   it "should reject company names that are too long"
-  
   it "should reject a company that has not been added"
-  
   it "should require a total sale amount"
-  
   it "should reject total sale amounts that are too large"
-  
   it "should reject total sale values that are negative"
-  
   it "should reject carrot values that are too long"
-  
   it "should reject carrot values that are negative"
-  
   it "should have at least one item"
-  
   it "should reject off campus listing units that are too large"
-  
   it "should reject off campus listing units that are negative"
-  
   it "should reject off campus featured listing units that are too large"
-  
   it "should reject off campus featured listing units that are negative"
-  
   it "should reject restaurant listing units that are too large"
-  
   it "should reject restaurant listing units that are negative"
-  
   it "should reject restaurant featured listing units that are too large"
-  
   it "should reject restaurant featured listing units that are negative"
-  
   it "should reject service listing units that are too large"
-  
   it "should reject service listing units that are negative"
-  
   it "should reject service featured listing units that are too large"
-  
   it "should reject service featured listing units that are negative"
-  
   it "should reject ads units that are too large"
-  
   it "should reject ads units that are negative"
-  
   it "should reject email blasts units that are too large"
-  
   it "should reject email blasts units that are negative"
-  
   it "should reject off campus listing total values that are too large"
-  
   it "should reject off campus listing total values that are negative"
-  
   it "should reject off campus featured listing total values that are too large"
-  
   it "should reject off campus featured listing total values that are negative"
-  
   it "should reject restaurant listing total values that are too large"
-  
   it "should reject restaurant listing total values that are negative"
-  
   it "should reject restaurant featured listing total values that are too large"
-  
   it "should reject restaurant featured listing total values that are negative"
-  
   it "should reject service listing total values that are too large"
-  
   it "should reject service listing total values that are negative"
-  
   it "should reject service featured listing total values that are too large"
-  
   it "should reject service featured listing total values that are negative"
-  
   it "should reject ads total values that are too large"
-  
   it "should reject ads total values that are negative"
-  
   it "should reject email blasts total values that are too large"
-  
   it "should reject email blasts total values that are negative"
-  
   it "should reject off campus listing total durations that are too large"
-  
   it "should reject off campus listing total durations that are negative"
-  
   it "should reject off campus featured listing total durations that are too large"
-  
   it "should reject off campus featured listing total durations that are negative"
-  
   it "should reject restaurant listing total durations that are too large"
-  
   it "should reject restaurant listing total durations that are negative"
-  
   it "should reject restaurant featured listing total durations that are too large"
-  
   it "should reject restaurant featured listing total durations that are negative"
-  
   it "should reject service listing total durations that are too large"
-  
   it "should reject service listing total durations that are negative"
-  
   it "should reject service featured listing total durations that are too large"
-  
   it "should reject service featured listing total durations that are negative"
-  
   it "should have a link back to the index"
   
   
