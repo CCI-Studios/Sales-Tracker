@@ -23,11 +23,11 @@ Factory.define :company do |company|
   company.first_name          "Foo"
   company.last_name           "Bar"
   company.phone               "(519) 555-1234"
-  company.email               "foo@bar.com"
+  company.sequence(:email)    { |n| "email-#{n}@example.com" }
 end
 
 Factory.define :user do |user|
-  user.email                  "foo@bar.com"
+  user.sequence(:email)       { |n| "email-#{n}@example.com" }
   user.password               "foobar"
   user.password_confirmation  "foobar"
 end
