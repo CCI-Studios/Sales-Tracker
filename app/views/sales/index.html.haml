@@ -14,7 +14,7 @@
 				%td{ :align => "center" }= number_to_currency sale.total
 				%td= sale.company.title if sale.company
 				%td= sale.campaign.title
-				%td
+				%td{ :align => "center" }
 					= link_to 'Show', sale
 					= link_to 'Edit', edit_sale_path(sale)
 					- if current_user.admin
