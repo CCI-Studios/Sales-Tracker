@@ -5,7 +5,7 @@ describe CampaignsController do
 
 	describe "GET 'index'" do	
 	  describe "for non-signed-in users" do
-      it "should deny access to index" do
+      it "should redirect to the signin page" do
   		  get :index
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -40,7 +40,7 @@ describe CampaignsController do
     end
 	  
 	  describe "for non-signed-in users" do
-      it "should deny access to show" do
+      it "should redirect to the signin page" do
   		  get :show, :id => @campaign
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -86,7 +86,7 @@ describe CampaignsController do
 		
 	describe "GET 'new'" do
 	  describe "for non-signed-in users" do
-      it "should deny access to index" do
+      it "should redirect to the signin page" do
   		  get :new
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -123,7 +123,7 @@ describe CampaignsController do
 	  end
 	  
 	  describe "for non-signed-in users" do
-      it "should deny access to index" do
+      it "should redirect to the signin page" do
   		  post :create, :campaign => @attr
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -186,7 +186,7 @@ describe CampaignsController do
     end
     
 	  describe "for non-signed-in users" do
-      it "should deny access to index" do
+      it "should redirect to the signin page" do
   		  get :edit, :id => @campaign
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -224,7 +224,7 @@ describe CampaignsController do
     end
 	  
 		describe "for non-signed-in users" do
-      it "should deny access to index" do
+      it "should redirect to the signin page" do
   		  put :update, :id => @campaign
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -282,7 +282,7 @@ describe CampaignsController do
     end
 	  
 	  describe "for non-signed-in users" do
-      it "should deny access to index" do
+      it "should redirect to the signin page" do
   		  delete :destroy, :id => @campaign
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -299,7 +299,7 @@ describe CampaignsController do
 		    test_sign_in(Factory(:user))
 	    end
 	    
-			it "should protect the action" do
+			it "should redirect to the root path" do
 			  delete :destroy, :id => @campaign
 			  response.should redirect_to(root_path)
 		  end

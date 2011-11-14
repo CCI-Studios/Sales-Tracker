@@ -5,9 +5,9 @@ describe CompaniesController do
 	
 	describe "GET 'index'" do
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to signin" do
 			  get :index
-			  response.should_not be_successful
+			  response.should redirect_to(new_user_session_path)
 		  end
 		end
 		
@@ -44,9 +44,9 @@ describe CompaniesController do
     end
 	  
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  get :show, :id => @company
-			  response.should_not be_successful
+			  response.should redirect_to(new_user_session_path)
 		  end
 		end
 		
@@ -88,9 +88,9 @@ describe CompaniesController do
     end
 	  
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  get :new
-			  response.should_not be_successful
+			  response.should redirect_to(new_user_session_path)
 		  end
 		end
 		
@@ -119,7 +119,7 @@ describe CompaniesController do
 	  end
 	  
 	  describe "for non-signed-in users" do
-      it "should deny access to index" do
+      it "should redirect to the signin page" do
   		  post :create, :company => @attr
   		  response.should redirect_to(new_user_session_path)
   	  end
@@ -182,9 +182,9 @@ describe CompaniesController do
     end
     
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirec to the signin page" do
 			  get :edit, :id => @company
-			  response.should_not be_successful
+			  response.should redirect_to(new_user_session_path)
 		  end
 		end
 		
@@ -224,9 +224,9 @@ describe CompaniesController do
 		    @attr = { :title => Factory.next(:title) }
 	    end
 	    
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  put :update, :id => @company, :company => @attr
-			  response.should_not be_successful
+			  response.should redirect_to(new_user_session_path)
 		  end
 		end
 		
@@ -276,7 +276,7 @@ describe CompaniesController do
     end
     
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the root path" do
 			  delete :destroy, :id => @company
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -294,7 +294,7 @@ describe CompaniesController do
 	    end
 	    
 			describe "as a non-admin user" do
-				it "should protect the action" do 
+				it "should redirect to the root path" do 
 				  delete :destroy, :id => @company
 				  response.should redirect_to(root_path)
 			  end

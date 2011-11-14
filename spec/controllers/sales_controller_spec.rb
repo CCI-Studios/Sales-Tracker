@@ -5,7 +5,7 @@ describe SalesController do
   
   describe "GET 'index'" do
   	describe "for non-signed-in users" do
-  		it "should deny access" do
+  		it "should redirect to the signin page" do
   		  get :index
   		  response.should_not be_successful
 		  end
@@ -41,7 +41,7 @@ describe SalesController do
     end
     
 	  describe "for non-signed-in users" do
-  			it "should deny access" do
+  			it "should redirect to the signin page" do
   			  get :show, :id => @sale
   			  response.should redirect_to(new_user_session_path)
 			  end
@@ -80,7 +80,7 @@ describe SalesController do
 
   describe "GET 'new'" do
   	describe "for non-signed-in users" do
-  			it "should deny access" do
+  			it "should redirect to the signin page" do
   			  get :new
   			  response.should redirect_to(new_user_session_path)
 			  end
@@ -112,7 +112,7 @@ describe SalesController do
 
   describe "POST 'create'" do
   	describe "for non-signed-in users" do
-  			it "should deny access" do
+  			it "should redirect to the signin page" do
   			  post :create, :sale => {}
   			  response.should redirect_to(new_user_session_path)
 			  end
@@ -185,7 +185,7 @@ describe SalesController do
     end
     
   	describe "for non-signed-in users" do
-  			it "should deny access" do
+  			it "should redirect to the signin page" do
   			  get :edit, :id => @sale
   			  response.should redirect_to(new_user_session_path)
 			  end
@@ -223,7 +223,7 @@ describe SalesController do
     end
     
   	describe "for non-signed-in users" do
-  			it "should deny access" do
+  			it "should redirect to the signin page" do
   			  put :update, :id => @sale, :sale => {}
   			  response.should redirect_to(new_user_session_path)
 			  end
@@ -277,7 +277,7 @@ describe SalesController do
     end
     
   	describe "for non-signed-in users" do
-  			it "should deny access" do
+  			it "should redirect to the signin page" do
   			  delete :destroy, :id => @sale
   			  response.should redirect_to(new_user_session_path)
 			  end
@@ -295,7 +295,7 @@ describe SalesController do
 	    end
 	    
   		describe "for a non-admin user" do
-  			it "should protect the action" do
+  			it "should redirect to the root path" do
   			  delete :destroy, :id => @sale
   			  response.should redirect_to(root_path)
 			  end

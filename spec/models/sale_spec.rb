@@ -10,6 +10,10 @@ describe Sale do
     }
   end
   
+  it "should respond to campaign"
+  it "should respond to company"
+  it "should respond to user"
+  
   it "should create new instance given valid attributes" do
     Sale.create!(@attr)    
   end

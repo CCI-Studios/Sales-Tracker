@@ -31,14 +31,14 @@ describe Attempt do
     attempt.should_not be_valid
   end
 
-  it "should have the right campaign given the a campaign name" do
+  it "should have the right campaign given a campaign name" do
     campaign = Factory(:campaign)
     attempt = Attempt.new(@attr.merge(:campaign => nil))
     attempt.campaign_name = campaign.title
     attempt.campaign.should == campaign
   end
 
-  it "should have the right campaign title given the a campaign name" do
+  it "should have the right campaign title given a campaign name" do
     campaign = Factory(:campaign)
     attempt = Attempt.new(@attr.merge(:campaign => nil))
     attempt.campaign_name = campaign.title
@@ -74,6 +74,10 @@ describe Attempt do
 
   it "should reject values that are too large"
   it "should reject values that are negative"
+  
+  it "should respond to campaign"
+  it "should respond to company"
+  it "should respond to user"
 end
 
 

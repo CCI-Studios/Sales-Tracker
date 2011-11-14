@@ -12,6 +12,9 @@ describe Company do
     }
   end
   
+  it "should respond to attempts"
+  it "should respond to sales"
+  
   it "should create a new instance given valid attributes" do
     Company.create!(@attr);
   end

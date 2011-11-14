@@ -5,7 +5,7 @@ describe AttemptsController do
   
   describe "GET 'index'" do
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  get :index
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -43,7 +43,7 @@ describe AttemptsController do
     end
     
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  get :show, :id => @attempt
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -92,7 +92,7 @@ describe AttemptsController do
 
 	describe "GET 'new'" do
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  get :new
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -139,7 +139,7 @@ describe AttemptsController do
     end
 	  
 		describe "for non-signed in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  post :create, :attempt => @attr
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -194,7 +194,7 @@ describe AttemptsController do
     end
     
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  get :edit, :id => @attempt
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -248,7 +248,7 @@ describe AttemptsController do
     end
     
 		describe "for non-signed-in users" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  put :update, :id => @attempt, :attempt => @attr
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -294,7 +294,7 @@ describe AttemptsController do
     end
 	    
 		describe "for a non-signed in user" do
-			it "should deny access" do
+			it "should redirect to the signin page" do
 			  delete :destroy, :id => @attempt
 			  response.should redirect_to(new_user_session_path)
 		  end
@@ -312,7 +312,7 @@ describe AttemptsController do
 	    end
 	    
 			describe "as a non-admin user" do
-				it "should protect the action" do
+				it "should redirect to the root path" do
 				  delete :destroy, :id => @attempt
 				  response.should redirect_to(root_path)
 			  end
