@@ -125,6 +125,19 @@ describe Campaign do
     it "should have the correct total listings" do
       @campaign.total_listings.should == 3
     end
+    
+    it "should delete dependant attempts when deleted" do
+      lambda do
+        @campaign.destroy
+      end.should change(Attempt, :count).by(-6)
+    end
+    
+    it "should delete dependant sales when deleted" do
+      lambda do
+        @campaign.destroy
+      end.should change(Sale, :count).by(-3)
+    end
+    
   end
 end
 
