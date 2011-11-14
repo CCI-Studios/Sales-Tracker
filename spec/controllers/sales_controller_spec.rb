@@ -279,7 +279,14 @@ describe SalesController do
   	describe "for non-signed-in users" do
   			it "should deny access" do
   			  delete :destroy, :id => @sale
+  			  response.should redirect_to(new_user_session_path)
 			  end
+			  
+			  it "should not delete the sale" do
+  		    lambda do
+  		      delete :destroy, :id => @sale
+  	      end.should_not change(Sale, :count)
+        end
   	end
   	
   	describe "for signed-in users" do
@@ -290,8 +297,14 @@ describe SalesController do
   		describe "for a non-admin user" do
   			it "should protect the action" do
   			  delete :destroy, :id => @sale
-  			  response.should_not be_successful
+  			  response.should redirect_to(root_path)
 			  end
+			  
+        it "should not delete the sale" do
+  		    lambda do
+  		      delete :destroy, :id => @sale
+  	      end.should_not change(Sale, :count)
+        end
   		end
 
   		describe "for an admin user" do

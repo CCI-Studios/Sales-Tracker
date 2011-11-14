@@ -7,7 +7,7 @@
 			%th Company
 			%th{ :width => 125 } Estimated Value
 			%th{ :width => 75 } Verbal
-			%th{ :width => 75 } &nbsp;
+			%th{ :width => 100 } &nbsp;
 
 	%tbody
 		- @attempts.each do |attempt|
@@ -19,6 +19,8 @@
 				%td{ :align => "center" }
 					= link_to 'Show', attempt
 					= link_to 'Edit', edit_attempt_path(attempt)
+					- if current_user.admin
+						= link_to "Delete", attempt, :method => "delete", :confirm => "Are you sure you want to delete this contact attempt? It is completely permanent!"
 
 	- if @attempts.total_pages > 1
 		%tfoot

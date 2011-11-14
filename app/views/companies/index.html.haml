@@ -8,7 +8,7 @@
 			%th{ :width => 100 } Phone
 			%th{ :width => 100 } Email
 			%th{ :width => 200 } Last Contact
-			%th{ :width => 110 } &nbsp;
+			%th{ :width => 100 } &nbsp;
 
 	%tbody
 		- @companies.each do |company|
@@ -21,7 +21,8 @@
 				%td{ :align => "center" }
 					= link_to 'Show', company
 					= link_to 'Edit', edit_company_path(company)
-					= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete
+					- if current_user.admin
+						= link_to 'Destroy', company, :confirm => 'Are you sure you want to delete this company? It is completely permanent!', :method => :delete
 	
 	- if @companies.total_pages > 1
 		%tfoot

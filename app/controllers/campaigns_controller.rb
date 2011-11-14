@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_filter :require_user
+  before_filter :require_admin, :only => [:destroy]
   
   # GET /campaigns
   def index

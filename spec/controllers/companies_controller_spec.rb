@@ -278,8 +278,14 @@ describe CompaniesController do
 		describe "for non-signed-in users" do
 			it "should deny access" do
 			  delete :destroy, :id => @company
-			  response.should_not be_successful
+			  response.should redirect_to(new_user_session_path)
 		  end
+		  
+		  it "should not delete the company" do
+		    lambda do
+		      delete :destroy, :id => @company
+	      end.should_not change(Company, :count)
+      end
 		end
 		
 		describe "for signed-in users" do
@@ -290,8 +296,14 @@ describe CompaniesController do
 			describe "as a non-admin user" do
 				it "should protect the action" do 
 				  delete :destroy, :id => @company
-				  response.should_not be_successful
+				  response.should redirect_to(root_path)
 			  end
+			  
+			  it "should not delete the company" do
+  		    lambda do
+  		      delete :destroy, :id => @company
+  	      end.should_not change(Company, :count)
+        end
 			end
 
 			describe "as an admin user" do

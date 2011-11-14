@@ -1,5 +1,6 @@
 class SalesController < ApplicationController
   before_filter :require_user
+  before_filter :require_admin, :only => [:destroy]
   
   autocomplete :campaign, :title, :full => true
   autocomplete :company, :title, :full => true

@@ -296,7 +296,14 @@ describe AttemptsController do
 		describe "for a non-signed in user" do
 			it "should deny access" do
 			  delete :destroy, :id => @attempt
+			  response.should redirect_to(new_user_session_path)
 		  end
+		  
+		  it "should not delete the attempt" do
+		    lambda do
+		      delete :destroy, :id => @attempt
+	      end.should_not change(Attempt, :count)
+      end
 		end
 		
 		describe "for a signed-in user" do
@@ -307,8 +314,14 @@ describe AttemptsController do
 			describe "as a non-admin user" do
 				it "should protect the action" do
 				  delete :destroy, :id => @attempt
-				  response.should_not be_successful
+				  response.should redirect_to(root_path)
 			  end
+			  
+			  it "should not delete the attempt" do
+  		    lambda do
+  		      delete :destroy, :id => @attempt
+  	      end.should_not change(Attempt, :count)
+        end
 			end
 
 			describe "as an admin user" do

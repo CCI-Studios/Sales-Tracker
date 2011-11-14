@@ -6,7 +6,7 @@
 			%th{ :width => 100 } Total
 			%th Company
 			%th Campaign
-			%th{ :width => 75 }
+			%th{ :width => 100 }
 
 	%tbody
 		- @sales.each do |sale|
@@ -17,6 +17,8 @@
 				%td
 					= link_to 'Show', sale
 					= link_to 'Edit', edit_sale_path(sale)
+					- if current_user.admin
+						= link_to "Delete", sale, :method => "delete", :confirm => "Are you sure you want to delete this sale? It is completely permanent!"
 
 	- if @sales.total_pages > 1
 		%tfoot

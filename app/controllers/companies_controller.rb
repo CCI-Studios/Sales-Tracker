@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_filter :require_user, :except => [:destroy]
+  before_filter :require_user
   before_filter :require_admin, :only => [:destroy]
   
   

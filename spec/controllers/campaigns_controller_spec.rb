@@ -286,6 +286,12 @@ describe CampaignsController do
   		  delete :destroy, :id => @campaign
   		  response.should redirect_to(new_user_session_path)
   	  end
+  	  
+  	  it "should not delete the campaign" do
+		    lambda do
+		      delete :destroy, :id => @campaign
+	      end.should_not change(Campaign, :count)
+      end
 	  end
     	  
 		describe "as a non-admin user" do
@@ -295,8 +301,14 @@ describe CampaignsController do
 	    
 			it "should protect the action" do
 			  delete :destroy, :id => @campaign
-			  response.should_not be_successful
+			  response.should redirect_to(root_path)
 		  end
+		  
+		  it "should not delete the campaign" do
+		    lambda do
+		      delete :destroy, :id => @campaign
+	      end.should_not change(Campaign, :count)
+      end
 		end
 
 		describe "as an admin user" do
