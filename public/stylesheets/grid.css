@@ -1,4 +1,6 @@
-.line,.lastUnit{overflow:hidden; *overflow:visible;*zoom:1;}
+.line:after{visibility:hidden;display:block;clear:both;height:0;font-size:0;content:" ";}
+* html .line{height:1%;}
+*:first-child+html .line{min-height:1%;}
 .unit{float:left;}
 .unitRight{float:right;}
 .size1of1{float:none;}
