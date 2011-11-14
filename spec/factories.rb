@@ -26,6 +26,13 @@ Factory.define :company do |company|
   company.sequence(:email)    { |n| "email-#{n}@example.com" }
 end
 
+Factory.define :sale do |sale|
+  sale.total                  1000
+  sale.association            :campaign
+  sale.association            :company
+  sale.association            :user
+end
+
 Factory.define :user do |user|
   user.sequence(:email)       { |n| "email-#{n}@example.com" }
   user.password               "foobar"

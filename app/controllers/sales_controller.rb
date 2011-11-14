@@ -27,7 +27,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @sale = Sale.find(params[:id])
-    @title = "Editing Sale ##{@sale.id}"
+    @title = "Editing Sale"
   end
 
   # POST /sales
@@ -35,8 +35,9 @@ class SalesController < ApplicationController
     @sale = Sale.new(params[:sale])
 
     if @sale.save
-      redirect_to(@sale, :notice => 'Sale was successfully created.')
+      redirect_to(@sale, :flash => { :success => 'Sale successfully created' })
     else
+      @title = "New Sale"
       render :action => "new"
     end
   end
@@ -46,8 +47,9 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
 
     if @sale.update_attributes(params[:sale])
-      redirect_to(@sale, :notice => 'Sale was successfully updated.')
+      redirect_to(@sale, :flash => { :success => 'Sale successfully updated' })
     else
+      @title = "Editing Sale"
       render :action => "edit"
     end
   end
@@ -56,5 +58,7 @@ class SalesController < ApplicationController
   def destroy
     @sale = Sale.find(params[:id])
     @sale.destroy
+    
+    redirect_to(sales_path)
   end
 end

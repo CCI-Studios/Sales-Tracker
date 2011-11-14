@@ -174,11 +174,10 @@ describe CampaignsController do
 			  
   			it "should have a success message" do
   			  post :create, :campaign => @attr
-  			  flash[:success].should =~ /campaign was successfully created/i
+  			  flash[:success].should =~ /campaign successfully created/i
   			end
   		end
 		end
-		
 	end
 	
 	describe "GET 'edit'" do
@@ -271,7 +270,7 @@ describe CampaignsController do
 			  
   			it "should have a success message" do
   			  post :update, :id => @campaign, :campaign => @attr
-          flash[:success].should =~ /campaign was successfully updated/i
+          flash[:success].should =~ /campaign successfully updated/i
         end
   		end
   	end

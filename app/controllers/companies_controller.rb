@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
-  before_filter :require_user
+  before_filter :require_user, :except => [:destroy]
+  before_filter :require_admin, :only => [:destroy]
+  
   
   # GET /companies
   def index
@@ -30,8 +32,9 @@ class CompaniesController < ApplicationController
     @company = Company.new(params[:company])
 
     if @company.save
-      redirect_to(@company, :flash => { :success => 'Company was successfully created' })
+      redirect_to(@company, :flash => { :success => 'Company successfully created' })
     else
+      @title = "New Company"
       render :action => "new"
     end
   end
@@ -41,7 +44,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
 
     if @company.update_attributes(params[:company])
-      redirect_to(@company, :flash => { :success => 'Company was successfully updated' })
+      redirect_to(@company, :flash => { :success => 'Company successfully updated' })
     else
       @title = "Editing Company"
       render :action => "edit"

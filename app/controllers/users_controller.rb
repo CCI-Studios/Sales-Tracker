@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :require_admin, :only => [:index, :new, :create, :show, :edit, :update]
+  before_filter :require_admin
+  
+  def index
+    @title = "Users"
+    @users = User.all
+  end
   
   def new
+    @title = "New User"
     @user = User.new
   end
   
@@ -9,14 +15,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Account registered!"
-      redirect_back_or_default root_path
+      redirect_to(users_path, :flash => { :success => "User successfully created" })
     else
+      @title = "New User"
       render :action => :new
     end
   end
-    
-  def index
-    @users = User.all
-  end
-
 end

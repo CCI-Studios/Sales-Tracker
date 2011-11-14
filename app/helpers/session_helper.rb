@@ -29,8 +29,8 @@ module SessionHelper
   end
   
   def require_admin
-    unless current_user.admin
-      flash[:notice] = "You must an admin to access this page"
+    unless current_user && current_user.admin
+      flash[:notice] = "Access is denied"
       redirect_to root_url
       return false
     end

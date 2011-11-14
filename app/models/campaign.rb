@@ -2,7 +2,10 @@ class Campaign < ActiveRecord::Base
   has_many :attempts
   has_many :sales
   
-  validates :title, :presence => true
+  validates :title, :presence => true,
+                    :uniqueness => { :case_sensitive => false }
+  validates_numericality_of :goal,  :greater_than_or_equal_to => 0,
+                                    :allow_nil => true
     
 
   default_scope :order => "LOWER(title) ASC"
@@ -18,7 +21,7 @@ class Campaign < ActiveRecord::Base
   
   def initial_contacts
     attempts.group_by(&:company_id).collect { |index, attempts|
-      attempts.first
+      attempts.last
     }
   end
   

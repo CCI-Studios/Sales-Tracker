@@ -111,7 +111,70 @@ describe CompaniesController do
 		end
 	end
 	
-	describe "POST 'create'"
+	describe "POST 'create'" do
+	  before(:each) do
+	    @attr = {
+        :title => "company name"
+	    }
+	  end
+	  
+	  describe "for non-signed-in users" do
+      it "should deny access to index" do
+  		  post :create, :company => @attr
+  		  response.should redirect_to(new_user_session_path)
+  	  end
+	  end
+	  
+		describe "for signed-in users" do
+		  before(:each) do
+		    test_sign_in(Factory(:user))
+	    end
+	    
+		  describe "failure" do
+		    before(:each) do
+		      @attr = { :title => nil }
+	      end
+	      
+  			it "should not create a company" do
+  			  lambda do
+  			    post :create, :company => @attr
+  			  end.should_not change(Company, :count)
+			  end
+  			
+  			it "should have the right title" do
+  			  post :create, :company => @attr
+  			  response.should have_selector(:title, :content => "New Company")
+			  end
+			  
+  			it "should render the 'new' page" do
+  			  post :create, :company => @attr
+  			  response.should render_template(:new)
+			  end
+  		end
+		
+  		describe "success" do
+  		  before(:each) do
+  		    @attr = { :title => "company title" }
+		    end
+  		  
+  			it "should create a company" do
+  			  lambda do
+  			    post :create, :company => @attr
+			    end.should change(Company, :count).by(1)
+  			end  
+  			  
+  			it "should redirect to the company show page" do
+  			  post :create, :company => @attr
+  			  response.should redirect_to(company_path(assigns(:company)))
+			  end
+			  
+  			it "should have a success message" do
+  			  post :create, :company => @attr
+  			  flash[:success].should =~ /company successfully created/i
+  			end
+  		end
+		end
+  end
 	
 	describe "GET 'edit'" do
 	  before(:each) do
@@ -201,24 +264,51 @@ describe CompaniesController do
 			  
 				it "should display a success message" do
 				  put :update, :id => @company, :company => @attr
-				  flash[:success].should =~ /company was successfully updated/i
+				  flash[:success].should =~ /company successfully updated/i
 			  end
 			end
 		end
 	end
 		
 	describe "DELETE 'destroy'" do
+	  before(:each) do
+	    @company = Factory(:company)
+    end
+    
 		describe "for non-signed-in users" do
-			it "should deny access"
+			it "should deny access" do
+			  delete :destroy, :id => @company
+			  response.should_not be_successful
+		  end
 		end
+		
 		describe "for signed-in users" do
+		  before(:each) do
+		    @user = test_sign_in(Factory(:user))
+	    end
+	    
 			describe "as a non-admin user" do
-				it "should protect the action"
+				it "should protect the action" do 
+				  delete :destroy, :id => @company
+				  response.should_not be_successful
+			  end
 			end
 
 			describe "as an admin user" do
-				it "should destroy the attempt"
-				it "should redirect to the index"
+			  before(:each) do
+			    @user.admin = true
+		    end
+		    
+				it "should destroy the company" do
+				  lambda do
+				    delete :destroy, :id => @company
+			    end.should change(Company, :count).by(-1)
+		    end
+		    
+				it "should redirect to the index" do
+				  delete :destroy, :id => @company
+				  response.should redirect_to(companies_path)
+			  end
 			end
 		end
 	end		
