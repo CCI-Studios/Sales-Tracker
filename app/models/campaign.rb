@@ -94,6 +94,18 @@ class Campaign < ActiveRecord::Base
   def avg_unit_duration
     total_duration/total_listings.to_f
   end
+  
+  def off_campus_carrots
+    sales.collect(&:off_campus_carrots).sum
+  end
+  
+  def restaurant_carrots
+    sales.collect(&:restaurant_carrots).sum
+  end
+  
+  def service_carrots
+    sales.collect(&:service_carrots).sum
+  end
 end
 
 

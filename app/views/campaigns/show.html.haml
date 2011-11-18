@@ -21,7 +21,6 @@
 	= "Total Sales Revenue: #{number_to_currency @campaign.total_revenue}"
 	%br
 	= "Revenue/Contact: #{number_to_currency @campaign.revenue_per_contact}"
-</p>
 
 %h2 Contacts Details
 %p
@@ -38,6 +37,11 @@
 	= "Avg units per sale: #{number_with_precision @campaign.units_per_sale, :precision => 2}"
 	%br
 	= "Ave unit duration: #{number_with_precision @campaign.avg_unit_duration, :precision => 2}"
-</p>
+
+%h2 Carrots
+%ul
+	%li= "Off Campus Carrots: #{@campaign.off_campus_carrots}"
+	%li= "Restaurant Carrots: #{@campaign.restaurant_carrots}"
+	%li= "Service Carrots: #{@campaign.service_carrots}"
 
 %p= link_to 'Campaigns', campaigns_path
