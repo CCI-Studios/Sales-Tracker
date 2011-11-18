@@ -65,7 +65,11 @@ describe Attempt do
     attempt.company_name.should == company.title
   end
 
-  it "should reject companies that do not exist"
+  it "should reject companies that do not exist" do
+    attempt = Attempt.new(@attr.merge(:company => nil))
+    attempt.company_name = "invalid"
+    attempt.company.should be_nil
+  end
   
   it "should have a appropriate year/date" do
     attempt = Attempt.create!(@attr)
@@ -73,11 +77,26 @@ describe Attempt do
   end
 
   it "should reject values that are too large"
-  it "should reject values that are negative"
+  it "should reject values that are negative" do
+    attempt = Attempt.new(@attr)
+    attempt.value = -1
+    attempt.should_not be_valid
+  end
   
-  it "should respond to campaign"
-  it "should respond to company"
-  it "should respond to user"
+  it "should respond to campaign" do
+    attempt = Attempt.new(@attr)
+    attempt.should respond_to(:campaign)
+  end
+    
+  it "should respond to company" do
+    attempt = Attempt.new(@attr)
+    attempt.should respond_to(:company)
+  end
+  
+  it "should respond to user" do
+    attempt = Attempt.new(@attr)
+    attempt.should respond_to(:user)
+  end
 end
 
 

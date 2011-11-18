@@ -1,12 +1,15 @@
 class Attempt < ActiveRecord::Base
+  # associations
   belongs_to :campaign
   belongs_to :company
   belongs_to :user
   
+  #validations
   validates_presence_of :campaign_id
   validates_presence_of :company_id
   validates_presence_of :user_id
   
+  #scopes
   default_scope :order => 'created_at DESC'
   scope :sales, where("value > 0")
   scope :emailed, where(:email => true)
@@ -27,6 +30,7 @@ class Attempt < ActiveRecord::Base
     self.company = Company.find_by_title(name)
   end
   
+  # returns a string which includes the year and day of year for an attempt
   def year_day
     self.created_at.strftime('%Y %j')
   end
