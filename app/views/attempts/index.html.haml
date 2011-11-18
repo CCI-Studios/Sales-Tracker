@@ -12,7 +12,7 @@
 	%tbody
 		- @attempts.each do |attempt|
 			%tr
-				%td{ :align => "center" }= attempt.created_at.strftime("%A, %B %d, %Y")
+				%td{ :align => "center" }= attempt.created_at.strftime("%A, %B %d, %Y %k:%M %P")
 				%td= attempt.company.title if attempt.company
 				%td{ :align => "center" }= number_to_currency attempt.value
 				%td{ :align => "center" }= attempt.verbal ? 'Yes' : ''
