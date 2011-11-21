@@ -23,7 +23,7 @@ class AttemptsController < ApplicationController
   # GET /attempts/new.xml
   def new
     @attempt = Attempt.new
-    @attempt.campaign_id = 1
+    @attempt.campaign_id = 7
     @attempt.user = current_user
     @title = "New Contact Attempt"
   end

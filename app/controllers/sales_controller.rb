@@ -20,7 +20,7 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @sale = Sale.new
-    @sale.campaign_id = 1
+    @sale.campaign_id = 7
     @sale.user = current_user
     @title = "New Sale"
   end
