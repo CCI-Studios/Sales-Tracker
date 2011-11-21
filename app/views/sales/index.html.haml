@@ -1,5 +1,7 @@
 %h1 Sales
 
+%p= link_to 'New Sale', new_sale_path
+
 %table.styled
 	%thead
 		%tr
@@ -26,5 +28,4 @@
 				%td{ :colspan => 5, :align => "center" }
 					= will_paginate @sales, :class => 'digg_pagination'
 
-%br
-= link_to 'New Sale', new_sale_path
+%p= link_to 'New Sale', new_sale_path

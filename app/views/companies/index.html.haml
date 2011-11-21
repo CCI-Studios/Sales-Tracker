@@ -1,5 +1,7 @@
 %h1 Listing Companies
 
+%p= link_to 'New company', new_company_path
+
 %table.styled
 	%thead
 		%tr
@@ -30,5 +32,4 @@
 				%td{ :colspan => 7, :align => "center" }
 					= will_paginate @companies, :class => "digg_pagination"
 
-%br
-= link_to 'New company', new_company_path
+%p= link_to 'New company', new_company_path

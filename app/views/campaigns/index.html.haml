@@ -1,5 +1,7 @@
 %h1 Listing campaigns
 
+%p= link_to 'New Campaign', new_campaign_path
+
 %table.styled
 	%thead
 		%tr
@@ -28,5 +30,4 @@
 				%td{ :colspan => 7,  :align => "center"}
 					= will_paginate @campaigns, :class => "digg_pagination"
 					
-%br
-= link_to 'New Campaign', new_campaign_path
+%p= link_to 'New Campaign', new_campaign_path

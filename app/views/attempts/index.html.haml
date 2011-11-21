@@ -1,5 +1,7 @@
 %h1 Listing attempts
 
+%p= link_to 'New Attempt', new_attempt_path
+
 %table.styled
 	%thead
 		%tr
@@ -28,5 +30,4 @@
 				%td{ :colspan => 7, :align => "center" }
 					= will_paginate @attempts, :class => "digg_pagination"
 
-%br
-= link_to 'New Attempt', new_attempt_path
+%p= link_to 'New Attempt', new_attempt_path
