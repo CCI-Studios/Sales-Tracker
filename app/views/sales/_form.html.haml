@@ -17,7 +17,7 @@
 	.field
 		= label :company_name, :company_name
 		= f.hidden_field :company_id
-		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id'
+		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id', :autofocus => true
 	
 	%h2 Sale Amount
 	.field
