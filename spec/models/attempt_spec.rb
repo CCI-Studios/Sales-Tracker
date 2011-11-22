@@ -77,6 +77,7 @@ describe Attempt do
   end
 
   it "should reject values that are too large"
+  
   it "should reject values that are negative" do
     attempt = Attempt.new(@attr)
     attempt.value = -1

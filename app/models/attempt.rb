@@ -8,6 +8,8 @@ class Attempt < ActiveRecord::Base
   validates_presence_of :campaign_id
   validates_presence_of :company_id
   validates_presence_of :user_id
+  validates_numericality_of :value, :greater_than_or_equal_to => 0,
+                                    :allow_nil => true
   
   #scopes
   default_scope :order => 'created_at DESC'
