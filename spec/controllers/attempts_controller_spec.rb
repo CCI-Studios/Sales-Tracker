@@ -113,6 +113,13 @@ describe AttemptsController do
 			  response.should have_selector(:title, :content => "New Contact Attempt")
 		  end
 		  
+		  it "should set the company to the last created" do
+        c1 = Factory(:company)
+        c2 = Factory(:company)
+        get :new
+        assigns(:attempt).company.should == c2
+      end
+		  
 			it "should have a field for the campaign name"
 			it "should have a field for the company name"
 			it "should have a field for the phone confirmation"
