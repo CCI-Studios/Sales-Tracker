@@ -24,7 +24,7 @@ class AttemptsController < ApplicationController
   def new
     @attempt = Attempt.new
     @attempt.campaign_id = 7
-    @attempt.company = Company.unscoped.last if Company.count
+    @attempt.company = current_user.companies.last
     @attempt.user = current_user
     @title = "New Contact Attempt"
   end

@@ -100,7 +100,7 @@ describe AttemptsController do
 		
 		describe "for signed-in users" do
 		  before(:each) do
-		    test_sign_in(Factory(:user))
+		    @user = test_sign_in(Factory(:user))
 	    end
 	    
 			it "should be successful" do
@@ -114,8 +114,8 @@ describe AttemptsController do
 		  end
 		  
 		  it "should set the company to the last created" do
-        c1 = Factory(:company)
-        c2 = Factory(:company)
+        c1 = Factory(:company, :user => @user)
+        c2 = Factory(:company, :user => @user)
         get :new
         assigns(:attempt).company.should == c2
       end
