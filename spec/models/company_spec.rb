@@ -15,6 +15,11 @@ describe Company do
   it "should respond to attempts"
   it "should respond to sales"
   
+  it "should respond to user" do
+    company = Company.new(@attr)
+    company.should respond_to(:user)
+  end
+  
   it "should create a new instance given valid attributes" do
     Company.create!(@attr);
   end

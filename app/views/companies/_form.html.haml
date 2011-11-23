@@ -6,6 +6,8 @@
 			%ul
 				- @company.errors.full_messages.each do |msg|
 					%li= msg
+					
+	= f.hidden_field :user_id
 
 	.field
 		= f.label :title

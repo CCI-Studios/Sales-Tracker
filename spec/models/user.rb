@@ -46,4 +46,6 @@ describe User do
     it "should destroy associated attempts"
   end
   
+  it "should respond to companies"
+  
 end

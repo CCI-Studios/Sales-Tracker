@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   
   # GET /companies
   def index
-    @companies = Company.page(params[:page])
+    @companies = Company.alphabetical.page(params[:page])
     @title = "Companies"
   end
 
@@ -18,6 +18,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.user = current_user
     @title = "New Company"
   end
 
