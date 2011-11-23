@@ -8,7 +8,7 @@ class Company < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
   validates :email, :format => { :with => email_regex, :allow_nil => true, :allow_blank => true }
   
-  default_scope :order => "LOWER(title) ASC"
+  scope :alphabetical, order("LOWER(title) ASC")
   
   def fullname
     if !last_name.blank? && !first_name.blank?

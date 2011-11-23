@@ -40,7 +40,7 @@ describe User do
     end
     
     it "should the right attempts in the right order" do
-      @user.attempts.should == [@a2, @a1]
+      @user.attempts.should == [@a1, @a2]
     end
     
     it "should destroy associated attempts"

@@ -7,7 +7,7 @@ class SalesController < ApplicationController
   
   # GET /sales
   def index
-    @sales = Sale.page(params[:page])
+    @sales = Sale.reverse_chronological.page(params[:page])
     @title = "Sales"
   end
 

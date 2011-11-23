@@ -7,7 +7,7 @@ class Sale < ActiveRecord::Base
   validates_presence_of :company_id
   validates_presence_of :user_id
   
-  default_scope :order => "created_at DESC"
+  scope :reverse_chronological, order("created_at DESC")
   
   def year_day
     self.created_at.strftime('%Y %j')

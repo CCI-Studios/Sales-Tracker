@@ -8,7 +8,7 @@ class AttemptsController < ApplicationController
   # GET /attempts
   # GET /attempts.xml
   def index
-    @attempts = Attempt.page(params[:page])
+    @attempts = Attempt.reverse_chronological.page(params[:page])
     @title = "Contact Attempts"
   end
 

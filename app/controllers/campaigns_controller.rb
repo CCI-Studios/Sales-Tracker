@@ -4,7 +4,7 @@ class CampaignsController < ApplicationController
   
   # GET /campaigns
   def index
-    @campaigns = Campaign.page(params[:page])
+    @campaigns = Campaign.alphabetical.page(params[:page])
     @title = "Campaigns"
   end
 

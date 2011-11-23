@@ -12,9 +12,9 @@ class Attempt < ActiveRecord::Base
                                     :allow_nil => true
   
   #scopes
-  default_scope :order => 'created_at DESC'
   scope :sales, where("value > 0")
   scope :emailed, where(:email => true)
+  scope :reverse_chronological, order("created_at DESC")
   
   def campaign_name
     campaign.title if campaign

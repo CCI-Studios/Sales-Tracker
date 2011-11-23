@@ -6,9 +6,8 @@ class Campaign < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
   validates_numericality_of :goal,  :greater_than_or_equal_to => 0,
                                     :allow_nil => true
-    
 
-  default_scope :order => "LOWER(title) ASC"
+  scope :alphabetical, order("LOWER(title) ASC")
 
   # filters
   def attempts_with_email
@@ -21,7 +20,7 @@ class Campaign < ActiveRecord::Base
   
   def initial_contacts
     attempts.group_by(&:company_id).collect { |index, attempts|
-      attempts.last
+      attempts.first
     }
   end
   
