@@ -1,16 +1,13 @@
 %p
 	%strong Company Name:
 	= @company.title
-
-%p
+	%br
 	%strong Contact Name:
 	= @company.fullname
-
-%p
+	%br
 	%strong Phone:
 	= @company.phone
-
-%p
+	%br
 	%strong Email:
 	= @company.email
 
@@ -18,6 +15,10 @@
 	%p
 		= @company.attempts.last.created_at.strftime("Last contacted %A, %B %d, %Y")
 		= link_to "Details", @company.attempts.last
+
+- @company.attempts.group_by(&:campaign_id).collect do |campaign, attempts|
+	%h2= attempts.first.campaign.title
+	%ul= render attempts
 
 = link_to 'Edit', edit_company_path(@company)
 |
