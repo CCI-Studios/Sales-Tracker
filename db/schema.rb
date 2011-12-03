@@ -10,84 +10,102 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123055433) do
+ActiveRecord::Schema.define(:version => 20111203092425) do
 
   create_table "attempts", :force => true do |t|
-    t.integer  "user_id"
-    t.boolean  "email"
-    t.boolean  "phone"
-    t.boolean  "fax"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "company_id"
-    t.integer  "campaign_id"
-    t.boolean  "verbal"
-    t.integer  "value"
+    t.integer   "user_id"
+    t.boolean   "email"
+    t.boolean   "phone"
+    t.boolean   "fax"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "company_id"
+    t.integer   "campaign_id"
+    t.boolean   "verbal"
+    t.integer   "value"
   end
 
   create_table "campaigns", :force => true do |t|
-    t.string   "title"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "goal"
+    t.string    "title"
+    t.date      "start_date"
+    t.date      "end_date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "goal"
   end
 
   create_table "companies", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone"
-    t.string   "email"
+    t.string    "first_name"
+    t.string    "last_name"
+    t.string    "phone"
+    t.string    "email"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "title"
+    t.integer   "user_id"
+  end
+
+  create_table "sale_attrs", :force => true do |t|
+    t.integer  "campaign_id"
+    t.string   "title"
+    t.integer  "kind"
+    t.string   "default"
+    t.boolean  "required"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
-    t.integer  "user_id"
+  end
+
+  create_table "sale_values", :force => true do |t|
+    t.integer  "sale_attr_id"
+    t.integer  "sale_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sales", :force => true do |t|
-    t.integer  "total"
-    t.integer  "company_id"
-    t.integer  "campaign_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "carrot"
-    t.integer  "off_campus",                   :default => 0, :null => false
-    t.integer  "off_campus_value",             :default => 0, :null => false
-    t.integer  "off_campus_duration",          :default => 0, :null => false
-    t.integer  "off_campus_featured",          :default => 0, :null => false
-    t.integer  "off_campus_featured_value",    :default => 0, :null => false
-    t.integer  "off_campus_featured_duration", :default => 0, :null => false
-    t.integer  "restaurant",                   :default => 0, :null => false
-    t.integer  "restaurant_value",             :default => 0, :null => false
-    t.integer  "restaurant_duration",          :default => 0, :null => false
-    t.integer  "restaurant_featured",          :default => 0, :null => false
-    t.integer  "restaurant_featured_value",    :default => 0, :null => false
-    t.integer  "restaurant_featured_duration", :default => 0, :null => false
-    t.integer  "services",                     :default => 0, :null => false
-    t.integer  "services_value",               :default => 0, :null => false
-    t.integer  "services_duration",            :default => 0, :null => false
-    t.integer  "services_featured",            :default => 0, :null => false
-    t.integer  "services_featured_value",      :default => 0, :null => false
-    t.integer  "services_featured_duration",   :default => 0, :null => false
-    t.integer  "email_blast",                  :default => 0, :null => false
-    t.integer  "email_blast_value",            :default => 0, :null => false
-    t.integer  "ads",                          :default => 0, :null => false
-    t.integer  "ads_value",                    :default => 0, :null => false
-    t.integer  "off_campus_carrots",           :default => 0, :null => false
-    t.integer  "restaurant_carrots",           :default => 0, :null => false
-    t.integer  "service_carrots",              :default => 0, :null => false
+    t.integer   "total"
+    t.integer   "company_id"
+    t.integer   "campaign_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "user_id"
+    t.integer   "carrot"
+    t.integer   "off_campus",                   :default => 0, :null => false
+    t.integer   "off_campus_value",             :default => 0, :null => false
+    t.integer   "off_campus_duration",          :default => 0, :null => false
+    t.integer   "off_campus_featured",          :default => 0, :null => false
+    t.integer   "off_campus_featured_value",    :default => 0, :null => false
+    t.integer   "off_campus_featured_duration", :default => 0, :null => false
+    t.integer   "restaurant",                   :default => 0, :null => false
+    t.integer   "restaurant_value",             :default => 0, :null => false
+    t.integer   "restaurant_duration",          :default => 0, :null => false
+    t.integer   "restaurant_featured",          :default => 0, :null => false
+    t.integer   "restaurant_featured_value",    :default => 0, :null => false
+    t.integer   "restaurant_featured_duration", :default => 0, :null => false
+    t.integer   "services",                     :default => 0, :null => false
+    t.integer   "services_value",               :default => 0, :null => false
+    t.integer   "services_duration",            :default => 0, :null => false
+    t.integer   "services_featured",            :default => 0, :null => false
+    t.integer   "services_featured_value",      :default => 0, :null => false
+    t.integer   "services_featured_duration",   :default => 0, :null => false
+    t.integer   "email_blast",                  :default => 0, :null => false
+    t.integer   "email_blast_value",            :default => 0, :null => false
+    t.integer   "ads",                          :default => 0, :null => false
+    t.integer   "ads_value",                    :default => 0, :null => false
+    t.integer   "off_campus_carrots",           :default => 0, :null => false
+    t.integer   "restaurant_carrots",           :default => 0, :null => false
+    t.integer   "service_carrots",              :default => 0, :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "admin",             :default => false
+    t.string    "email"
+    t.string    "crypted_password"
+    t.string    "password_salt"
+    t.string    "persistence_token"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "admin",             :default => false
   end
 
 end

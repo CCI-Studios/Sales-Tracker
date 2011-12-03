@@ -12,7 +12,11 @@ Sales::Application.routes.draw do
     get :autocomplete_company_title, :on => :collection
   end
   resources :companies
-  resources :campaigns
+  
+  resources :campaigns do
+    resources :sale_attrs
+  end
+  
   resources :users
 
   get "pages/home"

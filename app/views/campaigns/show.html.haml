@@ -1,6 +1,9 @@
 %h1
 	= @campaign.title
-	%small= link_to 'Edit', edit_campaign_path(@campaign)
+	%small
+		= link_to 'Edit', edit_campaign_path(@campaign)
+		= link_to 'Sale Attributes', campaign_sale_attrs_path(@campaign)
+	
 
 %p
 	%b Start date:

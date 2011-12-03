@@ -7,6 +7,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'haml'
 gem 'rails3-jquery-autocomplete'
 gem 'will_paginate', '~> 3.0.0'
+gem 'heroku'
 
 group :development do
   gem 'annotate', '2.4.0'
