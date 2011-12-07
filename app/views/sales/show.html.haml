@@ -78,7 +78,7 @@
 		%td{ :align => "center" }= number_to_currency @sale.email_blast_value
 		%td &nbsp;
 
-
-= link_to 'Edit', edit_sale_path(@sale)
-|
-= link_to 'Back', sales_path
+%p
+	= link_to 'Edit', edit_sale_path(@sale)
+	|
+	= link_to 'Back', sales_path

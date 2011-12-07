@@ -3,6 +3,11 @@ class Sale < ActiveRecord::Base
   belongs_to :company
   belongs_to :user
   
+  has_many :sale_attrs, :through => :campaign
+  has_many :sale_values
+  
+  has_eav :attributes => :sale_attrs, :values => :sale_values
+  
   validates_presence_of :campaign_id
   validates_presence_of :company_id
   validates_presence_of :user_id
