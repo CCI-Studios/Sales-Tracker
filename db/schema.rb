@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203092425) do
+ActiveRecord::Schema.define(:version => 20111207161900) do
 
   create_table "attempts", :force => true do |t|
     t.integer   "user_id"
@@ -55,14 +55,6 @@ ActiveRecord::Schema.define(:version => 20111203092425) do
     t.datetime "updated_at"
   end
 
-  create_table "sale_values", :force => true do |t|
-    t.integer  "sale_attr_id"
-    t.integer  "sale_id"
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sales", :force => true do |t|
     t.integer   "total"
     t.integer   "company_id"
@@ -96,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20111203092425) do
     t.integer   "off_campus_carrots",           :default => 0, :null => false
     t.integer   "restaurant_carrots",           :default => 0, :null => false
     t.integer   "service_carrots",              :default => 0, :null => false
+    t.text      "values"
   end
 
   create_table "users", :force => true do |t|
