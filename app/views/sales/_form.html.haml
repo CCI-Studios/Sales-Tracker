@@ -20,12 +20,10 @@
 		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id', :autofocus => true
 	
 	%table{ :width => '100%' }
-	- @sale.campaign.sale_attrs.each do |attr|
-		%p= attr.title
+		- @sale.sale_attrs.each do |attr|
+			%tr
+				%td= label attr.title, attr.title
+				%td= f.text_field attr.id, :index => :values, :value => @sale.values[attr.id.to_s]
 
 	.actions
 		= f.submit
-		
-
-%p= @sale['Off Campus Listing Quantity']
-%p *

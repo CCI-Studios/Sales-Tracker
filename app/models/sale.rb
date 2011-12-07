@@ -15,9 +15,7 @@ class Sale < ActiveRecord::Base
   def year_day
     self.created_at.strftime('%Y %j')
   end
-  
-  
-  
+
 end
 
 
