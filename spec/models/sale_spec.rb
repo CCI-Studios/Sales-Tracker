@@ -98,16 +98,17 @@ describe Sale do
   
 end
 
+
 # == Schema Information
 #
 # Table name: sales
 #
-#  id                           :integer         not null, primary key
+#  id                           :integer         primary key
 #  total                        :integer
 #  company_id                   :integer
 #  campaign_id                  :integer
-#  created_at                   :datetime
-#  updated_at                   :datetime
+#  created_at                   :timestamp
+#  updated_at                   :timestamp
 #  user_id                      :integer
 #  carrot                       :integer
 #  off_campus                   :integer         default(0), not null
@@ -132,5 +133,9 @@ end
 #  email_blast_value            :integer         default(0), not null
 #  ads                          :integer         default(0), not null
 #  ads_value                    :integer         default(0), not null
+#  off_campus_carrots           :integer         default(0), not null
+#  restaurant_carrots           :integer         default(0), not null
+#  service_carrots              :integer         default(0), not null
+#  values                       :text
 #
 

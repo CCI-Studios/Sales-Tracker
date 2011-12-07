@@ -9,17 +9,18 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: attempts
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  user_id     :integer
 #  email       :boolean
 #  phone       :boolean
 #  fax         :boolean
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
 #  company_id  :integer
 #  campaign_id :integer
 #  verbal      :boolean
