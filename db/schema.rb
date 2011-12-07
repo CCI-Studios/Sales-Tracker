@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207161900) do
+ActiveRecord::Schema.define(:version => 20111207215225) do
 
   create_table "attempts", :force => true do |t|
     t.integer   "user_id"
@@ -53,42 +53,17 @@ ActiveRecord::Schema.define(:version => 20111207161900) do
     t.boolean  "required"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "collection"
   end
 
   create_table "sales", :force => true do |t|
-    t.integer   "total"
-    t.integer   "company_id"
-    t.integer   "campaign_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
-    t.integer   "carrot"
-    t.integer   "off_campus",                   :default => 0, :null => false
-    t.integer   "off_campus_value",             :default => 0, :null => false
-    t.integer   "off_campus_duration",          :default => 0, :null => false
-    t.integer   "off_campus_featured",          :default => 0, :null => false
-    t.integer   "off_campus_featured_value",    :default => 0, :null => false
-    t.integer   "off_campus_featured_duration", :default => 0, :null => false
-    t.integer   "restaurant",                   :default => 0, :null => false
-    t.integer   "restaurant_value",             :default => 0, :null => false
-    t.integer   "restaurant_duration",          :default => 0, :null => false
-    t.integer   "restaurant_featured",          :default => 0, :null => false
-    t.integer   "restaurant_featured_value",    :default => 0, :null => false
-    t.integer   "restaurant_featured_duration", :default => 0, :null => false
-    t.integer   "services",                     :default => 0, :null => false
-    t.integer   "services_value",               :default => 0, :null => false
-    t.integer   "services_duration",            :default => 0, :null => false
-    t.integer   "services_featured",            :default => 0, :null => false
-    t.integer   "services_featured_value",      :default => 0, :null => false
-    t.integer   "services_featured_duration",   :default => 0, :null => false
-    t.integer   "email_blast",                  :default => 0, :null => false
-    t.integer   "email_blast_value",            :default => 0, :null => false
-    t.integer   "ads",                          :default => 0, :null => false
-    t.integer   "ads_value",                    :default => 0, :null => false
-    t.integer   "off_campus_carrots",           :default => 0, :null => false
-    t.integer   "restaurant_carrots",           :default => 0, :null => false
-    t.integer   "service_carrots",              :default => 0, :null => false
-    t.text      "values"
+    t.integer  "total"
+    t.integer  "company_id"
+    t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "values"
   end
 
   create_table "users", :force => true do |t|
