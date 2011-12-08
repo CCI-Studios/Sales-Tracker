@@ -8,6 +8,7 @@
 					%li= msg
 
 	= f.hidden_field :user_id
+	
 
 	.field
 		= label :campaign_name, :campaign_name
@@ -19,6 +20,10 @@
 		= f.hidden_field :company_id
 		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id', :autofocus => true
 	
+	.field
+		= f.label :total
+		= f.text_field :total
+				
 	%table{ :width => '100%' }
 		- @sale.sale_attrs.each do |attr|
 			%tr
