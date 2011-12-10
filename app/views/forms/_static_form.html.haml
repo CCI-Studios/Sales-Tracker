@@ -1,0 +1,5 @@
+.form_elements
+	= f.fields_for :form_elements do |builder|
+		= render 'form_element_fields', :f => builder
+	= link_to_add_fields "Add Element", f, :form_elements
+	

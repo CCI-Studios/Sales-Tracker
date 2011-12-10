@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207215225) do
+ActiveRecord::Schema.define(:version => 20111210144606) do
 
   create_table "attempts", :force => true do |t|
     t.integer   "user_id"
@@ -43,6 +43,29 @@ ActiveRecord::Schema.define(:version => 20111207215225) do
     t.timestamp "updated_at"
     t.string    "title"
     t.integer   "user_id"
+  end
+
+  create_table "form_elements", :force => true do |t|
+    t.integer  "form_id"
+    t.integer  "kind"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "option"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forms", :force => true do |t|
+    t.string   "name"
+    t.integer  "width"
+    t.integer  "height"
+    t.boolean  "read_only"
+    t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "default",     :default => false
   end
 
   create_table "sale_attrs", :force => true do |t|

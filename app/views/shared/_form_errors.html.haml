@@ -1,0 +1,7 @@
+- if @form.errors.any?
+	#error_explanation
+		%h2= "#{pluralize(@form.errors.count, "error")} prohibited this form from being saved:"
+
+		%ul
+			- @form.errors.full_messages.each do |msg|
+				%li= msg

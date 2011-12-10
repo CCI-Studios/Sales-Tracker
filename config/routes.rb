@@ -15,6 +15,7 @@ Sales::Application.routes.draw do
   
   resources :campaigns do
     resources :sale_attrs
+    resources :forms
   end
   
   resources :users

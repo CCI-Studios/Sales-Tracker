@@ -2,6 +2,7 @@ class Campaign < ActiveRecord::Base
   has_many :attempts, :dependent => :destroy
   has_many :sales, :dependent => :destroy
   has_many :sale_attrs
+  has_many :forms
   
   validates :title, :presence => true,
                     :uniqueness => { :case_sensitive => false }

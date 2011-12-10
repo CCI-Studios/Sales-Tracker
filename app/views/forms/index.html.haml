@@ -1,0 +1,20 @@
+%h1= "#{@campaign.title}'s Forms"
+
+%p= link_to 'New Form', new_campaign_form_path(@campaign)
+
+%table.styled
+	%thead
+		%tr
+			%th Title
+			%th{ :width => 100 } 
+
+	%tbody
+		- @forms.each do |form|
+			%tr
+				%td= link_to form.name, campaign_form_path(@campaign, form)
+				%td
+					= link_to "Edit", edit_campaign_form_path(@campaign, form)
+				
+
+					
+%p= link_to 'New Form', new_campaign_form_path(@campaign)

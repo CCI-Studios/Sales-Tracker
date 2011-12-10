@@ -3,6 +3,7 @@
 	%small
 		= link_to 'Edit', edit_campaign_path(@campaign)
 		= link_to 'Sale Attributes', campaign_sale_attrs_path(@campaign)
+		= link_to 'Forms', campaign_forms_path(@campaign)
 	
 
 %p
@@ -15,36 +16,5 @@
 	%b Revenue Goal:
 	= number_to_currency @campaign.goal
 
-%h2 Revenue Details
-%p
-	= "Total Contacts: #{@campaign.attempts.count}"
-	%br
-	= "Total Sales: #{@campaign.sales.count}"
-	%br
-	= "Total Sales Revenue: #{number_to_currency @campaign.total_revenue}"
-	%br
-	= "Revenue/Contact: #{number_to_currency @campaign.revenue_per_contact}"
-
-%h2 Contacts Details
-%p
-	= "Avg Calls Per Active Day: #{number_with_precision @campaign.avg_calls_per_day, :precision => 2}"
-	%br
-	= "Avg New Calls Per Day: #{number_with_precision @campaign.avg_new_calls_per_day, :precision => 2}"
-	%br
-	= "Follow ups per active day: #{number_with_precision @campaign.follow_ups_per_day, :precision => 2}"
-	%br
-	= "Emails Per Day: #{number_with_precision @campaign.emails_per_day, :precision => 2}"
-	%br
-	= "Contacts Per Sale: #{number_with_precision @campaign.contacts_per_sale, :precision => 2}"
-	%br
-	= "Avg units per sale: #{number_with_precision @campaign.units_per_sale, :precision => 2}"
-	%br
-	= "Ave unit duration: #{number_with_precision @campaign.avg_unit_duration, :precision => 2}"
-
-%h2 Carrots
-%ul
-	%li= "Off Campus Carrots: #{@campaign.off_campus_carrots}"
-	%li= "Restaurant Carrots: #{@campaign.restaurant_carrots}"
-	%li= "Service Carrots: #{@campaign.service_carrots}"
 
 %p= link_to 'Campaigns', campaigns_path

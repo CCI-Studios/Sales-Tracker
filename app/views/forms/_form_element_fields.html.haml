@@ -1,0 +1,23 @@
+.fields
+	%div
+		= f.label :kind
+		= f.text_field :kind
+	.clearfix
+		.left
+			= f.label :x
+			= f.text_field :x
+		.left
+			= f.label :y
+			= f.text_field :y
+	.clearfix
+		.left
+			= f.label :width
+			= f.text_field :width
+		.left
+			= f.label :height
+			= f.text_field :height
+	%div
+		= f.label :option
+		= f.text_field :option
+	%div
+		= link_to_remove_fields "Remove", f
