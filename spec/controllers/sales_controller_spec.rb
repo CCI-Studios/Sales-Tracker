@@ -3,6 +3,10 @@ require 'spec_helper'
 describe SalesController do
   render_views
   
+  before(:each) do
+    8.times { Campaign.create!(:title => Factory.next(:title)) }
+  end
+  
   describe "GET 'index'" do
   	describe "for non-signed-in users" do
   		it "should redirect to the signin page" do

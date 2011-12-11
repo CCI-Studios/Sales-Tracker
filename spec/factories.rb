@@ -15,15 +15,15 @@ Factory.define :attempt do |attempt|
 end
 
 Factory.define :campaign do |campaign|
-  campaign.sequence(:title)    { |n| "title-#{n}" }
+  campaign.title              { Factory.next(:title) }
 end
 
 Factory.define :company do |company|
-  company.sequence(:title)    { |n| "title-#{n}" }
+  company.title               { Factory.next(:title) }
   company.first_name          "Foo"
   company.last_name           "Bar"
   company.phone               "(519) 555-1234"
-  company.sequence(:email)    { |n| "email-#{n}@example.com" }
+  company.email               { Factory.next(:email) }
 end
 
 Factory.define :sale do |sale|
@@ -34,7 +34,7 @@ Factory.define :sale do |sale|
 end
 
 Factory.define :user do |user|
-  user.sequence(:email)       { |n| "email-#{n}@example.com" }
+  user.email                  { Factory.next(:email) }
   user.password               "foobar"
   user.password_confirmation  "foobar"
 end
