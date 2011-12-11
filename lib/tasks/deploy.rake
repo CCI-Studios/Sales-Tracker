@@ -1,6 +1,8 @@
 #Deploy and rollback on Heroku in staging and production
 task :deploy_staging => ['deploy:set_staging_app', 'deploy:push', 'deploy:restart', 'deploy:tag']
+task :pull_staging => ['deploy:staging_db_pull']
 task :deploy_production => ['deploy:set_production_app', 'deploy:push', 'deploy:restart', 'deploy:tag']
+task :pull_production => ['deploy:production_db_pull']
 
 namespace :deploy do
   PRODUCTION_APP = 'gentle-waterfall-2579'
@@ -8,9 +10,11 @@ namespace :deploy do
 
   task :staging_migrations => [:set_staging_app, :push, :off, :migrate, :restart, :on, :tag]
   task :staging_rollback => [:set_staging_app, :off, :push_previous, :restart, :on]
+  task :staging_db_pull => [:set_staging_app, :pull_db]
 
   task :production_migrations => [:set_production_app, :push, :off, :migrate, :restart, :on, :tag]
   task :production_rollback => [:set_production_app, :off, :push_previous, :restart, :on]
+  task :production_db_pull => [:set_production_app, :pull_db]
 
   task :set_staging_app do
     APP = STAGING_APP
@@ -18,6 +22,11 @@ namespace :deploy do
 
   task :set_production_app do
   	APP = PRODUCTION_APP
+  end
+  
+  task :pull_db do
+    puts "Pulling remote database"
+    puts "heroku db:pull --app #{APP} --confirm #{APP}"
   end
 
   task :push do
@@ -88,3 +97,4 @@ namespace :deploy do
     end
   end
 end
+
