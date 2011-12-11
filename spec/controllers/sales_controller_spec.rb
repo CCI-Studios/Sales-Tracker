@@ -3,10 +3,6 @@ require 'spec_helper'
 describe SalesController do
   render_views
   
-  before(:each) do
-    8.times { Campaign.create!(:title => Factory.next(:title)) }
-  end
-  
   describe "GET 'index'" do
   	describe "for non-signed-in users" do
   		it "should redirect to the signin page" do
@@ -29,13 +25,6 @@ describe SalesController do
   		  get :index
   		  response.should have_selector(:title, :content => "Sales")
 		  end
-		  
-  		it "should have an element for each sale's total"
-  		it "should paginate sales"
-  		it "should have an element for each company"
-  		it "should have an element for each campaign"
-  		it "should have a show link for each sale"
-  		it "should have an edit link for each sale"
   	end
   end
 
@@ -70,14 +59,7 @@ describe SalesController do
   		  get :show, :id => @sale
   		  response.should have_selector(:title, :content => "Sale ##{@sale.id}")
 		  end
-		  
-  		it "should have the company's name"
-  		it "should have the campaign"
-  		it "should have the total"
-  		it "should have the carrot"
-  		it "should have the sale details table"
-  		it "should have a link to the edit page"
-  		it "should have a link back to the index"
+
   		it "should redirect back to the index if the sale doesn't exist"
   	end
   end
@@ -104,13 +86,6 @@ describe SalesController do
   		  get :new
   		  response.should have_selector(:title, :content => "New Sale")
 		  end
-		  
-  		it "should have a field for the campaign name"
-  		it "should have a field for the company name"
-  		it "should have a field for the sale total"
-  		it "should have a field for the carrot"
-  		it "should have fields for the sale details"
-  		it "should have a link back to the index"
   	end
   end
 
@@ -209,14 +184,7 @@ describe SalesController do
   		  get :edit, :id => @sale
   		  response.should have_selector(:title, :content => "Editing Sale")
 		  end
-		  
-  		it "should have a field for the campaign name"
-  		it "should have a field for the company name"
-  		it "should have a field for the sale total"
-  		it "should have a field for the carrot"
-  		it "should have fields for the sale details"
-  		it "should have a link to the show page"
-  		it "should have a link back to the index"
+
   		it "should redirect back to the index if the sale doesn't exist"
   	end
   end

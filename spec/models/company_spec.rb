@@ -12,9 +12,6 @@ describe Company do
     }
   end
   
-  it "should respond to attempts"
-  it "should respond to sales"
-  
   it "should respond to user" do
     company = Company.new(@attr)
     company.should respond_to(:user)
@@ -71,6 +68,20 @@ describe Company do
   
   it "should accept valid phone numbers"
   it "should reject invalid phone numbers"
+  
+  describe "associations" do
+    before(:each) do
+      @company = Company.new(@attr)
+    end
+    
+    it "should respond to attempts" do
+      @company.should respond_to(:attempts)
+    end
+    
+    it "should respond to sales" do
+      @company.should respond_to(:sales)
+    end
+  end
   
   describe "fullname" do
     it "should return the correct name" do

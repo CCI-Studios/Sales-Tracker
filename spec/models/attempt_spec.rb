@@ -75,8 +75,6 @@ describe Attempt do
     attempt = Attempt.create!(@attr)
     attempt.year_day.should == Time.new.strftime('%Y %j')
   end
-
-  it "should reject values that are too large"
   
   it "should reject values that are negative" do
     attempt = Attempt.new(@attr)

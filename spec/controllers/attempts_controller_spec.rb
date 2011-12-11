@@ -25,15 +25,6 @@ describe AttemptsController do
 			  get :index
 			  response.should have_selector(:title, :content => "Contact Attempts")
 		  end
-		  
-			it "should have an element for each attempt"
-			it "should have an element for each company"
-			it "should have an element for each estimated value"
-			it "should have an element for each verbal"
-			it "should have a link to each show page"
-			it "should have a link to each edit page"
-			it "should paginate contact attempts"
-			it "should have a link to create a new attempt"
 		end
   end
 
@@ -68,13 +59,6 @@ describe AttemptsController do
 			  get :show, :id => @attempt
 			  response.should have_selector(:title, :content => "Attempt ##{@attempt.id}")
 		  end
-			
-			it "should have an element for the campaign name"
-			it "should have an element for the company"
-			it "should have an element for the email"
-			it "should have an element for the phone number"
-			it "should have an element for the fax"
-			it "should have an element for the verbal"
 			
 			it "should have a link to the edit page" do
 			  get :show, :id => @attempt
@@ -119,14 +103,6 @@ describe AttemptsController do
         get :new
         assigns(:attempt).company.should == c2
       end
-		  
-			it "should have a field for the campaign name"
-			it "should have a field for the company name"
-			it "should have a field for the phone confirmation"
-			it "should have a field for the email confirmation"
-			it "should have a field for the fax confirmation"
-			it "should have a field for the verbal confirmation"
-			it "should have a field for the value"
 			
 			it "should have a link back to the index" do
 			  get :new
@@ -221,14 +197,6 @@ describe AttemptsController do
 			  get :edit, :id => @attempt
 			  response.should have_selector(:title, :content => "Editing Attempt")
 		  end
-		  
-			it "should have a field for the campaign name"
-			it "should have a field for the company name"
-			it "should have a form for the phone confirmation"
-			it "should have a field for the email confirmation"
-			it "should have a field for the fax confirmation"
-			it "should have a field for the the verbal confirmation"
-			it "should have a field for the value"
 			
 			it "should have a link to the show page" do
 			  get :edit, :id => @attempt

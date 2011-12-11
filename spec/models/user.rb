@@ -42,10 +42,10 @@ describe User do
     it "should the right attempts in the right order" do
       @user.attempts.should == [@a1, @a2]
     end
-    
-    it "should destroy associated attempts"
+
+    it "should respond to companies" do
+      @user.should respond_to(:companies)
+    end
   end
-  
-  it "should respond to companies"
   
 end

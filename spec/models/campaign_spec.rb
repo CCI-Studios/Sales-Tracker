@@ -9,10 +9,7 @@ describe Campaign do
       :end_date   => "2011-12-10 10:30:30"
     }
   end
-  
-  it "should respond to attempts"
-  it "should respond to sales"
-  
+   
   it "should create a new instance given valid attributes" do
     Campaign.create!(@attr)
   end
@@ -33,18 +30,33 @@ describe Campaign do
     c = Campaign.new(@attr.merge(:title => @attr[:title].upcase))
     c.should_not be_valid
   end
-    
-	it "should reject names that are too long"
-	it "should reject goals that are too large"
-	
+  
 	it "should reject goals that are negative" do
 	  c = Campaign.new(@attr)
 	  c.goal = -1000
 	  c.should_not be_valid
-    end
+  end
   
-    it "should allow goals that are nil"
+  it "should allow goals that are nil" do
+    c = Campaign.new(@attr.merge(:goal => nil))
+    c.should be_valid
+  end
+  
 	it "should reject end dates that are before start dates"
+	
+	describe "associations" do
+	  before(:each) do
+	    @campaign = Campaign.new(@attr)
+    end
+    
+    it "should respond to attempts" do
+      @campaign.should respond_to(:attempts)
+    end
+
+    it "should respond to sales" do
+      @campaign.should respond_to(:sales)
+    end
+   end
 	
 	describe "calculations" do
 	  before(:each) do
@@ -111,47 +123,9 @@ describe Campaign do
     it "should return correct goal percent when there is a goal" do
       @campaign.goal_percent.should == 50.0
     end
-  
-    it "should return correct initial attempts" do
-      (@campaign.initial_contacts & [@a1, @a4, @a5]).should == (@campaign.initial_contacts | [@a1, @a4, @a5])
-    end
-    
-    it "should return attempts with emails" do
-      (@campaign.attempts_with_email & [@a1, @a3, @a6]).should == (@campaign.attempts_with_email | [@a1, @a3, @a6])
-    end
-	
-    it "should returm atteempts by day"
-	
-	it "should return the correct total revenue"
-	
-	it "should return the correct revenue per contact"
-	
-	it "should return the correct average calls per day"
-	
-	it "should return the correct average new calls per day"
-	
-	it "should return the correct active days"
-	
-	it "should return the correct follow ups per day"
-	
-	it "should return the correct emails per day"
-	
-	it "should return the correct contacts per sale"
-	
-	it "should return the correct units per sale"
-	
-	it "should return the correct average unit duration"
     
     it "should have the correct total duration" do
       @campaign.total_duration.should == 30
-    end
-    
-    it "should have the correct total units" do
-      @campaign.total_units.should == 4
-    end
-    
-    it "should have the correct total listings" do
-      @campaign.total_listings.should == 3
     end
     
     it "should delete dependant attempts when deleted" do
