@@ -14,7 +14,7 @@ Sales::Application.routes.draw do
   resources :companies
   
   resources :campaigns do
-    resources :sale_attrs
+    resources :products
   end
   
   resources :users
