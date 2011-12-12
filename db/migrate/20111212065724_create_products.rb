@@ -2,15 +2,15 @@ class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
       t.string :title
-      t.float :quantity
-      t.string :quantity_unit
-      t.boolean :show_quantity
-      t.date :start_date
-      t.boolean :show_start_date
-      t.boolean :end_date
-      t.float :price
-      t.float :discount
-
+      t.string :quantity_label
+      t.boolean :show_quantity, :default => true
+      t.string :start_date_label
+      t.boolean :show_start_date, :default => true
+      t.string :end_date_label
+      t.boolean :show_end_date, :default => true
+      t.boolean :show_price, :default => true
+      t.boolean :show_discount, :default => true
+      t.integer :campaign_id
       t.timestamps
     end
   end

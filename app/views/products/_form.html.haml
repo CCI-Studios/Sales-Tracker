@@ -1,0 +1,33 @@
+= form_for [@campaign, @product] do |f|
+	.field
+		= f.label :title
+		= f.text_field :title
+		
+	.field
+		= f.label :quantity_label
+		= f.text_field :quantity_label
+		= f.check_box :show_quantity
+		= f.label :show_quantity
+	
+	.field
+		= f.label :start_date_label
+		= f.text_field :start_date_label
+		= f.check_box :show_start_date
+		= f.label :show_start_date
+		
+	.field
+		= f.label :end_date_label
+		= f.text_field :end_date_label
+		= f.check_box :show_end_date
+		= f.label :show_end_date
+		
+	.field
+		= f.check_box :show_price
+		= f.label :show_price
+	
+	.field
+		= f.check_box :show_discount
+		= f.label :show_discount
+		
+	.action
+		= f.submit

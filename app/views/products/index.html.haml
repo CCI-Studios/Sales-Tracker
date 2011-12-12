@@ -1,0 +1,18 @@
+%h1 Products#index
+
+%p= link_to "New Product", new_campaign_product_path(@campaign)
+
+%table.styled
+	%thead
+		%tr
+			%th Title
+			%th &nbsp;
+			
+	%tbody
+		- @products.each do |product|
+			%tr
+				%td= link_to product.title, campaign_product_path(@campaign, product)
+				%td
+					= link_to "Edit", edit_campaign_product_path(@campaign, product)
+					
+%p= link_to "New Product", new_campaign_product_path(@campaign)

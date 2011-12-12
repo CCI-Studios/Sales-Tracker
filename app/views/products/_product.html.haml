@@ -1,0 +1,33 @@
+.product
+	%h2= @product.title
+
+	.clearfix
+		- if @product.show_price || @product.show_discount
+			.right
+				- if @product.show_price
+					= label_tag(:price) + text_field_tag(:price)
+					%br
+				
+				- if @product.show_discount
+					= label_tag(:discount) + text_field_tag(:discount)
+					%br
+
+		- if @product.show_quantity || @product.show_start_date || @product.show_end_date
+			.left
+				- if @product.show_quantity
+					= text_field_tag(:quantity) + label_tag(:quantity, @product.quantity_label)
+					%br
+				
+				- if @product.show_start_date
+					= label_tag(:start_date)
+					= date_select(@product, :start_date)
+					%br
+			
+				- if @product.show_end_date
+					= label_tag(:end_date)
+					= date_select(@product, :end_date)
+					%br
+
+%p
+	= link_to "Edit", edit_campaign_product_path(@campaign, @product)
+	= link_to "Products", campaign_products_path(@campaign)

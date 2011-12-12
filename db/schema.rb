@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212065342) do
+ActiveRecord::Schema.define(:version => 20111212065724) do
 
   create_table "attempts", :force => true do |t|
     t.integer   "user_id"
@@ -44,6 +44,21 @@ ActiveRecord::Schema.define(:version => 20111212065342) do
     t.timestamp "updated_at"
     t.string    "title"
     t.integer   "user_id"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "title"
+    t.string   "quantity_label"
+    t.boolean  "show_quantity",    :default => true
+    t.string   "start_date_label"
+    t.boolean  "show_start_date",  :default => true
+    t.string   "end_date_label"
+    t.boolean  "show_end_date",    :default => true
+    t.boolean  "show_price",       :default => true
+    t.boolean  "show_discount",    :default => true
+    t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sales", :force => true do |t|
