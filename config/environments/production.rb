@@ -1,4 +1,7 @@
 Sales::Application.configure do
+  config.assets.compress = true
+  config.assets.compile = true
+  config.assets.digest = true
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
