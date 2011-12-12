@@ -2,8 +2,9 @@ class Sale < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :company
   belongs_to :user
+  has_many :sale_items
   
-  has_many :sale_attrs, :through => :campaign
+  accepts_nested_attributes_for :sale_items, :allow_destroy => true, :reject_if => lambda { |a| a[:product_id].blank? }
   
   validates_presence_of :campaign_id
   validates_presence_of :company_id
@@ -16,9 +17,6 @@ class Sale < ActiveRecord::Base
   def year_day
     self.created_at.strftime('%Y %j')
   end
-  
-  
-  
 end
 
 

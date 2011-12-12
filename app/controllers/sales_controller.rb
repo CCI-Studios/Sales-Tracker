@@ -28,6 +28,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @sale = Sale.find(params[:id])
+    @sale.sale_items.build
     @title = "Editing Sale"
   end
 
@@ -36,7 +37,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(params[:sale])
 
     if @sale.save
-      redirect_to(@sale, :flash => { :success => 'Sale successfully created' })
+      redirect_to(edit_sale_path(@sale), :flash => { :success => 'Sale successfully created' })
     else
       @title = "New Sale"
       render :action => "new"
@@ -48,7 +49,7 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
 
     if @sale.update_attributes(params[:sale])
-      redirect_to(@sale, :flash => { :success => 'Sale successfully updated' })
+      redirect_to(edit_sale_path(@sale), :flash => { :success => 'Sale successfully updated' })
     else
       @title = "Editing Sale"
       render :action => "edit"

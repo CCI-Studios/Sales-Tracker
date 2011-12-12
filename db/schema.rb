@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212065724) do
+ActiveRecord::Schema.define(:version => 20111212121347) do
 
   create_table "attempts", :force => true do |t|
     t.integer   "user_id"
@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(:version => 20111212065724) do
     t.boolean  "show_price",       :default => true
     t.boolean  "show_discount",    :default => true
     t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sale_items", :force => true do |t|
+    t.integer  "sale_id"
+    t.integer  "product_id"
+    t.float    "quantity"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.float    "price"
+    t.float    "discount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

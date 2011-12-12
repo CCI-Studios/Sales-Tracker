@@ -18,13 +18,19 @@
 		= label :company_name, :company_name
 		= f.hidden_field :company_id
 		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id', :autofocus => true
+		
+	.field
+		= f.label :total
+		= f.text_field :total
 	
 	- if @sale.campaign
-		%table{ :width => '100%' }
-			- @sale.campaign.sale_attrs.each do |attr|
-				%tr
-					%td
-						%p= attr.title
+		.saleItems
+			= f.fields_for :sale_items do |builder|
+				- if builder.object.new_record?
+					= builder.collection_select(:product_id, @sale.campaign.products, :id, :title, { :include_blank => "None" })
+					= builder.submit :Add
+				-else 
+					= render 'products/product', :product => builder.object.product, :f => builder
 
 	.actions
 		= f.submit
