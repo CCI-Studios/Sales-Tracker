@@ -19,9 +19,7 @@
 		= f.hidden_field :company_id
 		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id', :autofocus => true
 		
-	.field
-		= f.label :total
-		= f.text_field :total
+	
 	
 	- if @sale.campaign
 		.saleItems
@@ -32,5 +30,10 @@
 				-else 
 					= render 'products/product', :product => builder.object.product, :f => builder
 
+	.field
+		= f.label :total
+		= f.hidden_field :total
+		%span#total= @sale.total
+		
 	.actions
 		= f.submit

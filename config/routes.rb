@@ -10,6 +10,8 @@ Sales::Application.routes.draw do
   resources :sales do
     get :autocomplete_campaign_title, :on => :collection
     get :autocomplete_company_title, :on => :collection
+    
+    resources :sale_items
   end
   resources :companies
   

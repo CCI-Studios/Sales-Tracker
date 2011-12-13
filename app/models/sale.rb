@@ -2,14 +2,13 @@ class Sale < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :company
   belongs_to :user
-  has_many :sale_items
+  has_many :sale_items, :dependent => :destroy
   
   accepts_nested_attributes_for :sale_items, :allow_destroy => true, :reject_if => lambda { |a| a[:product_id].blank? }
   
   validates_presence_of :campaign_id
   validates_presence_of :company_id
   validates_presence_of :user_id
-  validates_numericality_of :total, :greater_than_or_equal_to => 0
   serialize :values
   
   scope :reverse_chronological, order("created_at DESC")
