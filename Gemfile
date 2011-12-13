@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-gem 'sqlite3', '1.3.4'
 gem 'authlogic'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'haml'
@@ -17,6 +16,7 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3', '1.3.4'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
   gem 'rspec-rails'
@@ -27,6 +27,7 @@ group :production do
 end
 
 group :test do
+  gem 'sqlite3', '1.3.4'
   gem 'simplecov', :require => false
   gem 'turn', :require => false  
   gem 'rspec-rails'
