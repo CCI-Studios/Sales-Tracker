@@ -35,5 +35,5 @@
 
 - unless @sale.new_record?
 	= form_for [@sale, @sale.sale_items.build] do |f|
-		= f.collection_select(:product_id, @sale.campaign.products, :id, :title, { :include_blank => "None" })
+		= f.collection_select(:product_id, @sale.campaign.products, :id, :title)
 		= f.submit :Add
