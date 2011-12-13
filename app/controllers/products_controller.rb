@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     
     if @product.update_attributes(params[:product])
-      redirect_to(campaign_product_path(@campaign, @product), :flash => { :success => "Product updated" })
+      redirect_to(campaign_products_path(@campaign), :flash => { :success => "Product updated" })
     else
       @title = "Edit Product"
       render :action => 'edit'
