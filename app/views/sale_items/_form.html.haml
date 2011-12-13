@@ -1,2 +1,4 @@
-= form_for [@sale, @item] do |f|
+= fields_for 'sale[sale_items_attributes]', @item, :index => @item.sale.sale_items.count + 1 do |f|
 	= render 'products/product', :product => @item.product, :f => f
+	= f.hidden_field :id
+	
