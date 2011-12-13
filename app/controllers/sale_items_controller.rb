@@ -1,4 +1,7 @@
 class SaleItemsController < ApplicationController
+  before_filter :require_user
+  before_filter :require_admin, :only => [:destroy]
+  
   def create
     @sale = Sale.find(params[:sale_id])
     @item = @sale.sale_items.build(params[:sale_item])

@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  before_filter :require_user
+  before_filter :require_admin, :only => [:destroy]
+  
   before_filter :get_campaign
   
   def index
