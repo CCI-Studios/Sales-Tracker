@@ -71,11 +71,11 @@ class Campaign < ActiveRecord::Base
   end
   
   def total_duration 
-    listings.collect(&:quantity).sum
+    listings.collect(&:quantity).compact.sum
   end
   
   def total_units
-    sale_items.collect(&:quantity).sum
+    sale_items.collect(&:quantity).compact.sum
   end
   
   def listings
@@ -91,15 +91,15 @@ class Campaign < ActiveRecord::Base
   end
   
   def off_campus_carrots
-    sales.collect(&:off_campus_carrots).sum
+    sales.collect(&:off_campus_carrots).compact.sum
   end
   
   def restaurant_carrots
-    sales.collect(&:restaurant_carrots).sum
+    sales.collect(&:restaurant_carrots).compact.sum
   end
   
   def service_carrots
-    sales.collect(&:service_carrots).sum
+    sales.collect(&:service_carrots).compact.sum
   end
 end
 
