@@ -28,7 +28,6 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @sale = Sale.find(params[:id])
-    @sale.sale_items.build
     @title = "Editing Sale"
   end
 

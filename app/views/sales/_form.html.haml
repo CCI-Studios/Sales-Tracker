@@ -19,21 +19,21 @@
 		= f.hidden_field :company_id
 		= autocomplete_field_tag :company_name, @sale.company ? @sale.company.title : '', autocomplete_company_title_sales_path, :id_element => '#sale_company_id', :autofocus => true
 		
-	
-	
-	- if @sale.campaign
-		.saleItems
-			= f.fields_for :sale_items do |builder|
-				- if builder.object.new_record?
-					= builder.collection_select(:product_id, @sale.campaign.products, :id, :title, { :include_blank => "None" })
-					= builder.submit :Add
-				-else 
-					= render 'products/product', :product => builder.object.product, :f => builder
-
 	.field
 		= f.label :total
 		= f.hidden_field :total
 		%span#total= @sale.total
-		
+
 	.actions
 		= f.submit
+		
+	- if @sale.campaign
+		%h2 Products
+		#saleItems
+			= f.fields_for :sale_items do |builder|
+				= render 'products/product', :product => builder.object.product, :f => builder
+
+
+= form_for [@sale, @sale.sale_items.build] do |f|
+	= f.collection_select(:product_id, @sale.campaign.products, :id, :title, { :include_blank => "None" })
+	= f.submit :Add
