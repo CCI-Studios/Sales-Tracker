@@ -41,6 +41,10 @@
 	%br
 	= "Ave unit duration: #{number_with_precision @campaign.avg_unit_duration, :precision => 2}"
 
+%h2 Product Details
+%p
+	= "Total Listings: #{@campaign.total_listings}"
+
 %h2 Carrots
 %ul
 	%li= "Off Campus Carrots: #{@campaign.off_campus_carrots}"

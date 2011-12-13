@@ -1,6 +1,7 @@
 class Campaign < ActiveRecord::Base
   has_many :attempts, :dependent => :destroy
   has_many :sales, :dependent => :destroy
+  has_many :sale_items, :through => :sales
   has_many :products
   
   validates :title, :presence => true,
@@ -70,25 +71,19 @@ class Campaign < ActiveRecord::Base
   end
   
   def total_duration 
-    sales.collect { |sale|
-      sale.off_campus_duration + sale.off_campus_featured_duration + sale.restaurant_duration +
-        sale.restaurant_featured_duration + sale.services_duration + sale.services_featured_duration
-    }.sum
+    listings.collect(&:quantity).sum
   end
   
   def total_units
-    sales.collect { |sale|
-      sale.off_campus + sale.off_campus_featured + sale.restaurant + 
-        sale.restaurant_featured + sale.services + sale.services_featured +
-        sale.email_blast + sale.ads
-    }.sum
+    sale_items.collect(&:quantity).sum
+  end
+  
+  def listings
+    sale_items.filter_products('Listing')
   end
   
   def total_listings
-    sales.collect { |sale|
-      sale.off_campus + sale.off_campus_featured + sale.restaurant + 
-        sale.restaurant_featured + sale.services + sale.services_featured
-    }.sum
+    listings.count
   end
   
   def avg_unit_duration
