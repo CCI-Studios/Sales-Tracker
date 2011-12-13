@@ -21,12 +21,12 @@
 					%br
 				
 				- if product.show_start_date
-					= f.label:start_date
+					= f.label:start_date, product.start_date_label
 					= f.date_select :start_date
 					%br
 			
 				- if product.show_end_date
-					= f.label :end_date
+					= f.label :end_date, product.end_date_label
 					= f.date_select :end_date
 					%br
 					
