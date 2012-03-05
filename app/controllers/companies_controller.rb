@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   
   # GET /companies
   def index
-    @companies = Company.alphabetical.page(params[:page])
+    @companies = Company.search(params[:search]).alphabetical.page(params[:page])
     @title = "Companies"
   end
 

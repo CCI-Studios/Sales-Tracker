@@ -5,6 +5,11 @@
 %table.styled
 	%thead
 		%tr
+			%th{ :colspan => 6, :align => 'right' }
+				=form_tag companies_path, :method => 'get'
+				=text_field_tag :search, params[:search], :placeholder => 'Search...'
+				
+		%tr
 			%th Company Name
 			%th Contact Name
 			%th{ :width => 100 } Phone

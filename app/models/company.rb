@@ -9,6 +9,9 @@ class Company < ActiveRecord::Base
   validates :email, :format => { :with => email_regex, :allow_nil => true, :allow_blank => true }
   
   scope :alphabetical, order("LOWER(title) ASC")
+  scope :search, lambda { |search|
+    where('title LIKE :search OR first_name LIKE :search OR last_name LIKE :search or email LIKE :search or phone LIKE :search', { :search => "%#{search}%" })
+  }
   
   def fullname
     if !last_name.blank? && !first_name.blank?
