@@ -7,6 +7,7 @@ gem 'haml'
 gem 'rails3-jquery-autocomplete'
 gem 'will_paginate'
 gem 'heroku'
+gem 'thin'
 
 # Asset template engines
 group :assets do
